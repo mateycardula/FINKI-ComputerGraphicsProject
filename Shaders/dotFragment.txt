@@ -1,0 +1,15 @@
+#version 330 core
+out vec4 FragColor;
+
+void main() {
+    // Get the center coordinates of the screen
+    float centerX = 800.0 / 2.0;
+    float centerY = 600.0 / 2.0;
+
+    // Check if the current fragment is at the center
+    if (abs(gl_FragCoord.x - centerX) < 2.0 && abs(gl_FragCoord.y - centerY) < 2.0) {
+        FragColor = vec4(1.0, 0.0, 0.0, 1.0); // Red color for the dot
+    } else {
+        FragColor = vec4(0.0, 0.0, 0.0, 0.0); // Transparent for other pixels
+    }
+}
