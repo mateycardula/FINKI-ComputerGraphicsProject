@@ -35,6 +35,10 @@ protected:
     std::vector<glm::vec3> vertices;
     GLuint VAO, VBO;
     void setupMesh();
+    struct Vertex {
+        glm::vec3 Position;
+        glm::vec2 TexCoords;
+    };
 
     glm::vec3 color;
     glm::vec3 position;

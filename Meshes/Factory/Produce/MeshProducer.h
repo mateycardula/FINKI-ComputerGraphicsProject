@@ -9,6 +9,7 @@
 #include <glm.hpp>
 #include <memory>
 
+
 class MeshProducer {
 public:
     Mesh* CreateWall();
