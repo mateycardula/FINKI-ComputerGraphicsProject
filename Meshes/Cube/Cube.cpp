@@ -2,66 +2,64 @@
 
 void Cube::Create() {
     vertices = {
-            // Positions
-            glm::vec3(-0.5f, -0.5f, -0.5f),
-            glm::vec3(0.5f, -0.5f, -0.5f),
-            glm::vec3(0.5f,  0.5f, -0.5f),
-            glm::vec3(0.5f,  0.5f, -0.5f),
-            glm::vec3(-0.5f,  0.5f, -0.5f),
-            glm::vec3(-0.5f, -0.5f, -0.5f),
+            // Back face
+            {{-0.5f, -0.5f, -0.5f}, {0.0f, 0.0f}},
+            {{0.5f, -0.5f, -0.5f}, {1.0f, 0.0f}},
+            {{0.5f,  0.5f, -0.5f}, {1.0f, 1.0f}},
+            {{0.5f,  0.5f, -0.5f}, {1.0f, 1.0f}},
+            {{-0.5f,  0.5f, -0.5f}, {0.0f, 1.0f}},
+            {{-0.5f, -0.5f, -0.5f}, {0.0f, 0.0f}},
 
             // Front face
-            glm::vec3(-0.5f, -0.5f,  0.5f),
-            glm::vec3(0.5f, -0.5f,  0.5f),
-            glm::vec3(0.5f,  0.5f,  0.5f),
-            glm::vec3(0.5f,  0.5f,  0.5f),
-            glm::vec3(-0.5f,  0.5f,  0.5f),
-            glm::vec3(-0.5f, -0.5f,  0.5f),
+            {{-0.5f, -0.5f,  0.5f}, {0.0f, 0.0f}},
+            {{0.5f, -0.5f,  0.5f}, {1.0f, 0.0f}},
+            {{0.5f,  0.5f,  0.5f}, {1.0f, 1.0f}},
+            {{0.5f,  0.5f,  0.5f}, {1.0f, 1.0f}},
+            {{-0.5f,  0.5f,  0.5f}, {0.0f, 1.0f}},
+            {{-0.5f, -0.5f,  0.5f}, {0.0f, 0.0f}},
 
             // Left face
-            glm::vec3(-0.5f,  0.5f,  0.5f),
-            glm::vec3(-0.5f,  0.5f, -0.5f),
-            glm::vec3(-0.5f, -0.5f, -0.5f),
-            glm::vec3(-0.5f, -0.5f, -0.5f),
-            glm::vec3(-0.5f, -0.5f,  0.5f),
-            glm::vec3(-0.5f,  0.5f,  0.5f),
+            {{-0.5f,  0.5f,  0.5f}, {1.0f, 0.0f}},
+            {{-0.5f,  0.5f, -0.5f}, {1.0f, 1.0f}},
+            {{-0.5f, -0.5f, -0.5f}, {0.0f, 1.0f}},
+            {{-0.5f, -0.5f, -0.5f}, {0.0f, 1.0f}},
+            {{-0.5f, -0.5f,  0.5f}, {0.0f, 0.0f}},
+            {{-0.5f,  0.5f,  0.5f}, {1.0f, 0.0f}},
 
             // Right face
-            glm::vec3(0.5f,  0.5f,  0.5f),
-            glm::vec3(0.5f,  0.5f, -0.5f),
-            glm::vec3(0.5f, -0.5f, -0.5f),
-            glm::vec3(0.5f, -0.5f, -0.5f),
-            glm::vec3(0.5f, -0.5f,  0.5f),
-            glm::vec3(0.5f,  0.5f,  0.5f),
+            {{0.5f,  0.5f,  0.5f}, {1.0f, 0.0f}},
+            {{0.5f,  0.5f, -0.5f}, {1.0f, 1.0f}},
+            {{0.5f, -0.5f, -0.5f}, {0.0f, 1.0f}},
+            {{0.5f, -0.5f, -0.5f}, {0.0f, 1.0f}},
+            {{0.5f, -0.5f,  0.5f}, {0.0f, 0.0f}},
+            {{0.5f,  0.5f,  0.5f}, {1.0f, 0.0f}},
 
             // Bottom face
-            glm::vec3(-0.5f, -0.5f, -0.5f),
-            glm::vec3(0.5f, -0.5f, -0.5f),
-            glm::vec3(0.5f, -0.5f,  0.5f),
-            glm::vec3(0.5f, -0.5f,  0.5f),
-            glm::vec3(-0.5f, -0.5f,  0.5f),
-            glm::vec3(-0.5f, -0.5f, -0.5f),
+            {{-0.5f, -0.5f, -0.5f}, {0.0f, 1.0f}},
+            {{0.5f, -0.5f, -0.5f}, {1.0f, 1.0f}},
+            {{0.5f, -0.5f,  0.5f}, {1.0f, 0.0f}},
+            {{0.5f, -0.5f,  0.5f}, {1.0f, 0.0f}},
+            {{-0.5f, -0.5f,  0.5f}, {0.0f, 0.0f}},
+            {{-0.5f, -0.5f, -0.5f}, {0.0f, 1.0f}},
 
             // Top face
-            glm::vec3(-0.5f,  0.5f, -0.5f),
-            glm::vec3(0.5f,  0.5f, -0.5f),
-            glm::vec3(0.5f,  0.5f,  0.5f),
-            glm::vec3(0.5f,  0.5f,  0.5f),
-            glm::vec3(-0.5f,  0.5f,  0.5f),
-            glm::vec3(-0.5f,  0.5f, -0.5f)
+            {{-0.5f,  0.5f, -0.5f}, {0.0f, 1.0f}},
+            {{0.5f,  0.5f, -0.5f}, {1.0f, 1.0f}},
+            {{0.5f,  0.5f,  0.5f}, {1.0f, 0.0f}},
+            {{0.5f,  0.5f,  0.5f}, {1.0f, 0.0f}},
+            {{-0.5f,  0.5f,  0.5f}, {0.0f, 0.0f}},
+            {{-0.5f,  0.5f, -0.5f}, {0.0f, 1.0f}}
     };
 
-    this->setBoundingBox(vertices);
+    this->setBoundingBox();
     setupMesh();
 }
 
 void Cube::Render(Shader& shader) {
     shader.Use();
-    //shader.setVec3("meshColor", getColor());
-
-    //glm::mat4 model = glm::translate(glm::mat4(1.0f), position);
-    //shader.setMat4("model", model);
-
+    glBindTexture(GL_TEXTURE_2D, texture.textureID);
+    shader.setInt("texture1", 0);
+    shader.setVec3("meshColor", color);
     glBindVertexArray(VAO);
     glDrawArrays(GL_TRIANGLES, 0, 36); // 6 faces * 2 triangles * 3 vertices
     glBindVertexArray(0);

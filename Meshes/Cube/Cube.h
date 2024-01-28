@@ -1,6 +1,3 @@
-//
-// Created by mateycardula on 1/25/2024.
-//
 
 #ifndef OPENGL_CUBE_H
 #define OPENGL_CUBE_H

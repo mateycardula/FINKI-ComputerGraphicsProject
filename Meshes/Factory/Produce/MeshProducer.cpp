@@ -26,10 +26,10 @@ MeshProducer& MeshProducer::atPosition(const glm::vec3& position) {
 }
 
 void MeshProducer::attributeAssign(Mesh *mesh) {
-    // Assuming Create() sets default scale
     mesh->setColor(color);
     mesh->setPosition(position);
     mesh->setRotation(rotation);
+    mesh->setTexture(texture);
 }
 
 Mesh *MeshProducer::CreateFloor() {
@@ -41,5 +41,10 @@ Mesh *MeshProducer::CreateFloor() {
 
 MeshProducer &MeshProducer::withRotation(const glm::vec3 &rotation) {
     this->rotation = rotation;
+    return *this;
+}
+
+MeshProducer &MeshProducer::withTexture(Texture texture) {
+    this->texture = texture;
     return *this;
 }

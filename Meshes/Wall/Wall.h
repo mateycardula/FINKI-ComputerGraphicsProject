@@ -14,7 +14,6 @@ public:
     Wall();
     void Create() override;
     void ApplyTransformation(const glm::vec3& scale) override;
-
 private:
 
 };

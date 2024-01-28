@@ -1,5 +1,6 @@
 #define GLM_ENABLE_EXPERIMENTAL
 
+
 #include "refactor.h"
 #include "Meshes/Factory/Produce/MeshProducer.h"
 #include "imgui_impl_opengl3.h"
@@ -10,6 +11,8 @@
 #include "Camera/UI/UI.h"
 #include "algorithm"
 #include "DungeonGenerator/DungeonGenerator.h"
+#include "Include/stb_image.h"
+#include "Meshes/Texture.h"
 
 using namespace std;
 
@@ -17,7 +20,9 @@ const GLint WIDTH = 800, HEIGHT = 600;
 
 std::vector<Mesh*> sceneMeshes;
 
+
 int main(){
+
     GLFWwindow* mainWindow = nullptr;
 
     Init app(WIDTH, HEIGHT, "211029");
@@ -34,15 +39,17 @@ int main(){
     UI ui(WIDTH, HEIGHT);
     Raycaster raycaster(app);
 
+    glActiveTexture(GL_TEXTURE0);
     glEnable(GL_DEPTH_TEST);
 
     int maxTiles = 1000;
-    int gridWidth = 300;
-    int gridDepth = 200;
+    int gridWidth = 500;
+    int gridDepth = 100;
 
     DungeonGenerator generator = *new DungeonGenerator(maxTiles, gridWidth, gridDepth);
     generator.createFloorLayout(sceneMeshes);
     generator.placeWalls(sceneMeshes);
+    generator.generateRooms(sceneMeshes);
 
 
     float lastFrame = 0.0f;
@@ -65,12 +72,14 @@ int main(){
         glm::mat4 projection = app.camera.getProjectionMatrix();
         myShader.setMat4("projection", projection);
 
+
+
         for (Mesh* mesh : sceneMeshes) {
             AABB box = mesh->getBoundingBox();
             if (raycaster.intersectsWithAABB(box)) {
-                myShader.setVec3("meshColor", glm::vec3(0.2f, 0.5f, 0.2f));
+                //myShader.setVec3("meshColor", glm::vec3(0.2f, 0.5f, 0.2f));
             } else {
-                myShader.setVec3("meshColor", mesh->getColor());
+                //myShader.setVec3("meshColor", mesh->getColor());
             }
 
             glm::vec3 rotation = mesh->getRotation();

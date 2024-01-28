@@ -1,7 +1,11 @@
+
+
+#include <iostream>
+
+
 #include "Mesh.h"
 
 Mesh::Mesh() : VAO(0), VBO(0) {
-
 }
 
 Mesh::~Mesh() {
@@ -11,23 +15,26 @@ Mesh::~Mesh() {
 
 void Mesh::setupMesh() {
     glGenVertexArrays(1, &VAO);
-    glBindVertexArray(VAO);
-
     glGenBuffers(1, &VBO);
-    glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(glm::vec3), vertices.data(), GL_STATIC_DRAW);
 
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(glm::vec3), (void*)0);
+    glBindVertexArray(VAO);
+    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+    glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(Vertex), vertices.data(), GL_STATIC_DRAW);
+
+    // Position attribute
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, Position));
     glEnableVertexAttribArray(0);
+
+    // Texture coordinates attribute
+    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, TexCoords));
+    glEnableVertexAttribArray(1);
 
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
-
-
 }
 
 void Mesh::ApplyTransformation(const glm::vec3& scale) {
-
+    // Implement transformation logic if necessary
 }
 
 void Mesh::setColor(const glm::vec3& newColor) {
@@ -40,38 +47,35 @@ glm::vec3 Mesh::getColor() const {
 
 void Mesh::setPosition(const glm::vec3& newPosition) {
     position = newPosition;
-    setBoundingBox(vertices);
+    setBoundingBox();
 }
 
 glm::vec3 Mesh::getPosition() const {
     return position;
 }
 
-void Mesh::setBoundingBox(const std::vector<glm::vec3>& vertices) {
+void Mesh::setBoundingBox() {
     if (!vertices.empty()) {
-        glm::vec3 min = vertices[0];
-        glm::vec3 max = vertices[0];
+        glm::vec3 min = vertices[0].Position;
+        glm::vec3 max = vertices[0].Position;
 
-        glm::mat4 rotMatrix(1.0f);
-        rotMatrix = glm::rotate(rotMatrix, glm::radians(rotation.x), glm::vec3(1, 0, 0)); // X-axis rotation
-        rotMatrix = glm::rotate(rotMatrix, glm::radians(rotation.y), glm::vec3(0, 1, 0)); // Y-axis rotation
-        rotMatrix = glm::rotate(rotMatrix, glm::radians(rotation.z), glm::vec3(0, 0, 1)); // Z-axis rotation
+        glm::mat4 rotMatrix = glm::rotate(glm::mat4(1.0f), glm::radians(rotation.x), glm::vec3(1, 0, 0));
+        rotMatrix = glm::rotate(rotMatrix, glm::radians(rotation.y), glm::vec3(0, 1, 0));
+        rotMatrix = glm::rotate(rotMatrix, glm::radians(rotation.z), glm::vec3(0, 0, 1));
 
         for (const auto& vertex : vertices) {
-            glm::vec4 rotatedVertex = rotMatrix * glm::vec4(vertex, 1.0f);
+            glm::vec4 rotatedVertex = rotMatrix * glm::vec4(vertex.Position, 1.0f);
             min = glm::min(min, glm::vec3(rotatedVertex));
             max = glm::max(max, glm::vec3(rotatedVertex));
         }
 
-        // Apply the object's position
-        min = position + min;
-        max = position + max;
+        min += position;
+        max += position;
 
         boundingBox.min = min;
         boundingBox.max = max;
     }
 }
-
 
 AABB Mesh::getBoundingBox() const {
     return boundingBox;
@@ -79,12 +83,14 @@ AABB Mesh::getBoundingBox() const {
 
 void Mesh::setRotation(const glm::vec3& newRotation) {
     rotation = newRotation;
-    setBoundingBox(vertices);
+    setBoundingBox();
 }
 
 glm::vec3 Mesh::getRotation() const {
     return rotation;
 }
 
-
+void Mesh::setTexture(const Texture &texture) {
+    Mesh::texture = texture;
+}
 

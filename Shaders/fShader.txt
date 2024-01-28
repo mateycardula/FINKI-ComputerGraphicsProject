@@ -3,8 +3,9 @@ out vec4 colour;
 
 uniform vec3 meshColor;
 
+in vec2 TexCoords;
+uniform sampler2D texture1;
+
 void main() {
-
-    colour = vec4(meshColor, 1.0);
-
+    colour = texture(texture1, TexCoords) * vec4(meshColor, 0.0);
 }

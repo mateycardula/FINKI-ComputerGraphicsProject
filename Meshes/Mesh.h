@@ -1,15 +1,22 @@
 #ifndef MESH_H
 #define MESH_H
 
-#include <GL/glew.h>
 #include <vector>
 #include "glm.hpp"
 #include "gtc/matrix_transform.hpp"
 #include "../Shaders/Shader.h"
+#include "Texture.h"
+
+struct Vertex {
+    glm::vec3 Position;
+    glm::vec2 TexCoords;
+};
+
 struct AABB {
     glm::vec3 min;
     glm::vec3 max;
 };
+
 class Mesh {
 public:
     Mesh();
@@ -25,25 +32,24 @@ public:
     void setPosition(const glm::vec3& newPosition);
     glm::vec3 getPosition() const;
 
-    virtual void setBoundingBox(const std::vector<glm::vec3>& vertices);
+    virtual void setBoundingBox();
     virtual AABB getBoundingBox() const;
 
-    void setRotation(const glm::vec3& newRotation);  // Rotation setter
+    void setRotation(const glm::vec3& newRotation);
     glm::vec3 getRotation() const;
 
+    void setTexture(const Texture &texture);
+
+
 protected:
-    std::vector<glm::vec3> vertices;
+    std::vector<Vertex> vertices;
     GLuint VAO, VBO;
     void setupMesh();
-    struct Vertex {
-        glm::vec3 Position;
-        glm::vec2 TexCoords;
-    };
-
     glm::vec3 color;
     glm::vec3 position;
     glm::vec3 rotation;
+    Texture texture;
     AABB boundingBox;
 };
 
-#endif // MESH_H
+#endif

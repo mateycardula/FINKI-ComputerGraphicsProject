@@ -31,9 +31,6 @@ add_executable(${PROJECT_NAME} main.cpp
         Shaders/Shader.h
         Meshes/Mesh.cpp
         Meshes/Mesh.h
-        Meshes/Triangle/Triangle.cpp
-        Meshes/Triangle/Triangle.cpp
-        Meshes/Triangle/Triangle.h
         Meshes/Factory/MeshFactory.cpp
         Meshes/Factory/MeshFactory.h
         Meshes/Types/ShapeType.h
@@ -59,6 +56,8 @@ add_executable(${PROJECT_NAME} main.cpp
         Meshes/Floor/Floor.h
         DungeonGenerator/DungeonGenerator.cpp
         DungeonGenerator/DungeonGenerator.h
+        Meshes/Texture.cpp
+        Meshes/Texture.h
 )
 
 target_link_libraries(${PROJECT_NAME} glew32s glfw3 opengl32 glew32)

@@ -7,8 +7,6 @@
 
 Mesh* MeshFactory::CreateMesh(ShapeType shapeType) {
     switch (shapeType) {
-        case ShapeType::Triangle:
-            return new Triangle();
         case ShapeType::Cube:
             return new Cube();
         case ShapeType::Wall:
