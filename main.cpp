@@ -47,9 +47,12 @@ int main(){
     int gridDepth = 100;
 
     DungeonGenerator generator = *new DungeonGenerator(maxTiles, gridWidth, gridDepth);
-    generator.createFloorLayout(sceneMeshes);
-    generator.placeWalls(sceneMeshes);
+    generator.createFloorLayout();
     generator.generateRooms(sceneMeshes);
+    generator.placeWalls();
+    generator.fetchFloorMeshes(sceneMeshes);
+    generator.fetchOuterWallMeshes(sceneMeshes);
+
 
 
     float lastFrame = 0.0f;
@@ -75,12 +78,12 @@ int main(){
 
 
         for (Mesh* mesh : sceneMeshes) {
-            AABB box = mesh->getBoundingBox();
-            if (raycaster.intersectsWithAABB(box)) {
-                //myShader.setVec3("meshColor", glm::vec3(0.2f, 0.5f, 0.2f));
-            } else {
-                //myShader.setVec3("meshColor", mesh->getColor());
-            }
+//            AABB box = mesh->getBoundingBox();
+//            if (raycaster.intersectsWithAABB(box)) {
+//                //myShader.setVec3("meshColor", glm::vec3(0.2f, 0.5f, 0.2f));
+//            } else {
+//                //myShader.setVec3("meshColor", mesh->getColor());
+//            }
 
             glm::vec3 rotation = mesh->getRotation();
 
