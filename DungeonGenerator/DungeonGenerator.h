@@ -18,6 +18,10 @@ public:
         TOP,
         BOTTOM
     };
+
+
+
+
     struct Tile {
         int x, y;
         glm::vec3 color = {1.0f, 1.0f, 1.0f};

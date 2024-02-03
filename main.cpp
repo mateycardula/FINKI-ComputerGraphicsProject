@@ -42,15 +42,15 @@ int main(){
     glActiveTexture(GL_TEXTURE0);
     glEnable(GL_DEPTH_TEST);
 
-    int maxTiles = 1000;
+    int maxTiles = 1600;
     int gridWidth = 500;
     int gridDepth = 100;
 
     DungeonGenerator generator = *new DungeonGenerator(maxTiles, gridWidth, gridDepth);
     generator.createFloorLayout();
     generator.generateRooms(sceneMeshes);
-    generator.placeWalls();
     generator.fetchFloorMeshes(sceneMeshes);
+    generator.placeWalls();
     generator.fetchOuterWallMeshes(sceneMeshes);
 
 
@@ -78,11 +78,11 @@ int main(){
 
 
         for (Mesh* mesh : sceneMeshes) {
-//            AABB box = mesh->getBoundingBox();
+            AABB box = mesh->getBoundingBox();
 //            if (raycaster.intersectsWithAABB(box)) {
-//                //myShader.setVec3("meshColor", glm::vec3(0.2f, 0.5f, 0.2f));
+//                myShader.setVec3("meshColor", glm::vec3(0.2f, 0.5f, 0.2f));
 //            } else {
-//                //myShader.setVec3("meshColor", mesh->getColor());
+//                myShader.setVec3("meshColor", mesh->getColor());
 //            }
 
             glm::vec3 rotation = mesh->getRotation();
