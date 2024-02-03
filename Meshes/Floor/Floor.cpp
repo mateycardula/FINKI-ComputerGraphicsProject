@@ -8,9 +8,9 @@ Floor::Floor() {
 
 }
 
-void Floor::Create() {
+void Floor::Create(float gridSize) {
     Cube::Create();
-    glm::vec3 scale = glm::vec3(3.0f, 0.2f, 3.0f);
+    glm::vec3 scale = glm::vec3(gridSize, 0.2f, gridSize);
     for (auto& vertex : vertices) {
         vertex.Position = glm::vec3(glm::scale(glm::mat4(1.0f), scale) * glm::vec4(vertex.Position, 1.0f));
     }

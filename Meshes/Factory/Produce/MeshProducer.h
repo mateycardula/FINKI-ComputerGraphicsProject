@@ -12,9 +12,9 @@
 
 class MeshProducer {
 public:
-    Mesh* CreateWall();
+    Mesh* CreateWall(float gridSize);
     Mesh* CreateCube();
-    Mesh* CreateFloor();
+    Mesh* CreateFloor(float gridSize);
     static Mesh* CreateTriangle();
 
     MeshProducer& withColor(const glm::vec3& color);

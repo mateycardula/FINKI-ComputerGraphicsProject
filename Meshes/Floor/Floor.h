@@ -12,7 +12,7 @@
 class Floor : public Cube {
 public:
     Floor();
-    void Create() override;
+    void Create(float gridSize);
 private:
 
 };

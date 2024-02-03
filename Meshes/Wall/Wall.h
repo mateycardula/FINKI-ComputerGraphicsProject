@@ -12,7 +12,8 @@
 class Wall : public Cube {
 public:
     Wall();
-    void Create() override;
+    void Create(float gridSize);
+
     void ApplyTransformation(const glm::vec3& scale) override;
 private:
 

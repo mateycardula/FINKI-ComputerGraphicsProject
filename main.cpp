@@ -18,6 +18,7 @@ using namespace std;
 
 const GLint WIDTH = 800, HEIGHT = 600;
 
+
 std::vector<Mesh*> sceneMeshes;
 
 
@@ -45,13 +46,14 @@ int main(){
     int maxTiles = 1600;
     int gridWidth = 500;
     int gridDepth = 100;
+    float gridSize = 3;
 
-    DungeonGenerator generator = *new DungeonGenerator(maxTiles, gridWidth, gridDepth);
+    DungeonGenerator generator = *new DungeonGenerator(maxTiles, gridWidth, gridDepth, gridSize);
     generator.createFloorLayout();
     generator.generateRooms(sceneMeshes);
     generator.fetchFloorMeshes(sceneMeshes);
-    generator.placeWalls();
-    generator.fetchOuterWallMeshes(sceneMeshes);
+   // generator.placeWalls();
+    //generator.fetchOuterWallMeshes(sceneMeshes);
 
 
 

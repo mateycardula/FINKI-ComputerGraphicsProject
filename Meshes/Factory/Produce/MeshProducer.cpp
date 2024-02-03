@@ -1,8 +1,8 @@
 #include "MeshProducer.h"
 
-Mesh* MeshProducer::CreateWall() {
-    Mesh* wall = new Wall();
-    wall->Create();
+Mesh* MeshProducer::CreateWall(float gridSize) {
+    Wall* wall = new Wall();
+    wall->Create(gridSize);
     attributeAssign(wall);
     return wall;
 }
@@ -32,9 +32,9 @@ void MeshProducer::attributeAssign(Mesh *mesh) {
     mesh->setTexture(texture);
 }
 
-Mesh *MeshProducer::CreateFloor() {
-    Mesh* floor = new Floor();
-    floor->Create();
+Mesh *MeshProducer::CreateFloor(float gridSize) {
+    Floor* floor = new Floor();
+    floor->Create(gridSize);
     attributeAssign(floor);
     return floor;
 }
