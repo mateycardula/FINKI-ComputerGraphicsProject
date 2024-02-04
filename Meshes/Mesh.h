@@ -1,6 +1,6 @@
 #ifndef MESH_H
 #define MESH_H
-
+#define GLM_ENABLE_EXPERIMENTAL
 #include <vector>
 #include "glm.hpp"
 #include "gtc/matrix_transform.hpp"
@@ -20,7 +20,6 @@ struct AABB {
 class Mesh {
 public:
     Mesh();
-    virtual ~Mesh();
 
     virtual void Create() = 0;
     virtual void Render(Shader& shader) = 0;
@@ -32,22 +31,24 @@ public:
     void setPosition(const glm::vec3& newPosition);
     glm::vec3 getPosition() const;
 
-    virtual void setBoundingBox();
-    virtual AABB getBoundingBox() const;
+   // virtual void setBoundingBox();
+    //virtual AABB getBoundingBox() const;
 
-    void setRotation(const glm::vec3& newRotation);
-    glm::vec3 getRotation() const;
+    void setRotation(const float newRotation);
+    float getRotation() const;
 
     void setTexture(const Texture &texture);
 
+    const Texture &getTexture() const;
+
+    glm::mat4 modelMatrix;
 
 protected:
     std::vector<Vertex> vertices;
-    GLuint VAO, VBO;
-    void setupMesh();
     glm::vec3 color;
     glm::vec3 position;
-    glm::vec3 rotation;
+    float rotation;
+
     Texture texture;
     AABB boundingBox;
 };

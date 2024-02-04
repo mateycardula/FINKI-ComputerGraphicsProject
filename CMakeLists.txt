@@ -58,6 +58,8 @@ add_executable(${PROJECT_NAME} main.cpp
         DungeonGenerator/DungeonGenerator.h
         Meshes/Texture.cpp
         Meshes/Texture.h
+        Meshes/GeometryManager.cpp
+        Meshes/GeometryManager.h
 )
 
 target_link_libraries(${PROJECT_NAME} glew32s glfw3 opengl32 glew32)

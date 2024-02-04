@@ -2,8 +2,8 @@
 
 Mesh* MeshProducer::CreateWall(float gridSize) {
     Wall* wall = new Wall();
-    wall->Create(gridSize);
     attributeAssign(wall);
+    wall->Create(gridSize);
     return wall;
 }
 
@@ -34,12 +34,12 @@ void MeshProducer::attributeAssign(Mesh *mesh) {
 
 Mesh *MeshProducer::CreateFloor(float gridSize) {
     Floor* floor = new Floor();
-    floor->Create(gridSize);
     attributeAssign(floor);
+    floor->Create(gridSize);
     return floor;
 }
 
-MeshProducer &MeshProducer::withRotation(const glm::vec3 &rotation) {
+MeshProducer &MeshProducer::withRotation(const float rotation) {
     this->rotation = rotation;
     return *this;
 }

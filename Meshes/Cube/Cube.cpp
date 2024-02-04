@@ -51,8 +51,8 @@ void Cube::Create() {
             {{-0.5f,  0.5f, -0.5f}, {0.0f, 1.0f}}
     };
 
-    this->setBoundingBox();
-    setupMesh();
+    //this->setBoundingBox();
+   // setupMesh();
 }
 
 void Cube::Render(Shader& shader) {
@@ -60,7 +60,7 @@ void Cube::Render(Shader& shader) {
     glBindTexture(GL_TEXTURE_2D, texture.textureID);
     shader.setInt("texture1", 0);
     shader.setVec3("meshColor", color);
-    glBindVertexArray(VAO);
+   // glBindVertexArray(VAO);
     glDrawArrays(GL_TRIANGLES, 0, 36); // 6 faces * 2 triangles * 3 vertices
     glBindVertexArray(0);
 }

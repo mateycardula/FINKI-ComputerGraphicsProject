@@ -241,6 +241,14 @@ build CMakeFiles/OpenGL.dir/Meshes/Texture.cpp.obj: CXX_COMPILER__OpenGL_unscann
   OBJECT_DIR = CMakeFiles\OpenGL.dir
   OBJECT_FILE_DIR = CMakeFiles\OpenGL.dir\Meshes
 
+build CMakeFiles/OpenGL.dir/Meshes/GeometryManager.cpp.obj: CXX_COMPILER__OpenGL_unscanned_Debug C$:/Users/mateycardula/CLionProjects/OpenGL/Meshes/GeometryManager.cpp || cmake_object_order_depends_target_OpenGL
+  DEFINES = -DGLEW_STATIC
+  DEP_FILE = CMakeFiles\OpenGL.dir\Meshes\GeometryManager.cpp.obj.d
+  FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glew/include -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glfw/include -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glm -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/imgui
+  OBJECT_DIR = CMakeFiles\OpenGL.dir
+  OBJECT_FILE_DIR = CMakeFiles\OpenGL.dir\Meshes
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target OpenGL
@@ -249,7 +257,7 @@ build CMakeFiles/OpenGL.dir/Meshes/Texture.cpp.obj: CXX_COMPILER__OpenGL_unscann
 #############################################
 # Link the executable OpenGL.exe
 
-build OpenGL.exe: CXX_EXECUTABLE_LINKER__OpenGL_Debug CMakeFiles/OpenGL.dir/main.cpp.obj CMakeFiles/OpenGL.dir/Include/imgui/imgui.cpp.obj CMakeFiles/OpenGL.dir/Include/imgui/imgui_draw.cpp.obj CMakeFiles/OpenGL.dir/Include/imgui/imgui_widgets.cpp.obj CMakeFiles/OpenGL.dir/Include/imgui/imgui_impl_glfw.cpp.obj CMakeFiles/OpenGL.dir/Include/imgui/imgui_impl_opengl3.cpp.obj CMakeFiles/OpenGL.dir/Include/imgui/imgui_demo.cpp.obj CMakeFiles/OpenGL.dir/Include/imgui/imgui_tables.cpp.obj CMakeFiles/OpenGL.dir/init.cpp.obj CMakeFiles/OpenGL.dir/Shapes/shapes.cpp.obj CMakeFiles/OpenGL.dir/Shaders/Shader.cpp.obj CMakeFiles/OpenGL.dir/Meshes/Mesh.cpp.obj CMakeFiles/OpenGL.dir/Meshes/Factory/MeshFactory.cpp.obj CMakeFiles/OpenGL.dir/Camera/Camera.cpp.obj CMakeFiles/OpenGL.dir/Input/InputManager.cpp.obj CMakeFiles/OpenGL.dir/Meshes/Cube/Cube.cpp.obj CMakeFiles/OpenGL.dir/Meshes/Wall/Wall.cpp.obj CMakeFiles/OpenGL.dir/Meshes/Factory/Produce/MeshProducer.cpp.obj CMakeFiles/OpenGL.dir/Camera/Raycaster.cpp.obj CMakeFiles/OpenGL.dir/Camera/UI/ImGuiManager.cpp.obj CMakeFiles/OpenGL.dir/Camera/UI/UI.cpp.obj CMakeFiles/OpenGL.dir/Meshes/Floor/Floor.cpp.obj CMakeFiles/OpenGL.dir/DungeonGenerator/DungeonGenerator.cpp.obj CMakeFiles/OpenGL.dir/Meshes/Texture.cpp.obj
+build OpenGL.exe: CXX_EXECUTABLE_LINKER__OpenGL_Debug CMakeFiles/OpenGL.dir/main.cpp.obj CMakeFiles/OpenGL.dir/Include/imgui/imgui.cpp.obj CMakeFiles/OpenGL.dir/Include/imgui/imgui_draw.cpp.obj CMakeFiles/OpenGL.dir/Include/imgui/imgui_widgets.cpp.obj CMakeFiles/OpenGL.dir/Include/imgui/imgui_impl_glfw.cpp.obj CMakeFiles/OpenGL.dir/Include/imgui/imgui_impl_opengl3.cpp.obj CMakeFiles/OpenGL.dir/Include/imgui/imgui_demo.cpp.obj CMakeFiles/OpenGL.dir/Include/imgui/imgui_tables.cpp.obj CMakeFiles/OpenGL.dir/init.cpp.obj CMakeFiles/OpenGL.dir/Shapes/shapes.cpp.obj CMakeFiles/OpenGL.dir/Shaders/Shader.cpp.obj CMakeFiles/OpenGL.dir/Meshes/Mesh.cpp.obj CMakeFiles/OpenGL.dir/Meshes/Factory/MeshFactory.cpp.obj CMakeFiles/OpenGL.dir/Camera/Camera.cpp.obj CMakeFiles/OpenGL.dir/Input/InputManager.cpp.obj CMakeFiles/OpenGL.dir/Meshes/Cube/Cube.cpp.obj CMakeFiles/OpenGL.dir/Meshes/Wall/Wall.cpp.obj CMakeFiles/OpenGL.dir/Meshes/Factory/Produce/MeshProducer.cpp.obj CMakeFiles/OpenGL.dir/Camera/Raycaster.cpp.obj CMakeFiles/OpenGL.dir/Camera/UI/ImGuiManager.cpp.obj CMakeFiles/OpenGL.dir/Camera/UI/UI.cpp.obj CMakeFiles/OpenGL.dir/Meshes/Floor/Floor.cpp.obj CMakeFiles/OpenGL.dir/DungeonGenerator/DungeonGenerator.cpp.obj CMakeFiles/OpenGL.dir/Meshes/Texture.cpp.obj CMakeFiles/OpenGL.dir/Meshes/GeometryManager.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lglew32s  -lglfw3  -lopengl32  -lglew32  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   LINK_PATH = -LC:/Users/mateycardula/CLionProjects/OpenGL/Include/glew/lib/Release/x64   -LC:/Users/mateycardula/CLionProjects/OpenGL/Include/glfw/lib-mingw-w64

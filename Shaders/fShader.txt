@@ -1,11 +1,12 @@
-#version 330
+#version 330 core
 out vec4 colour;
 
-uniform vec3 meshColor;
-
 in vec2 TexCoords;
-uniform sampler2D texture1;
+in vec3 instanceColor;
+
+uniform sampler2D textureSampler;
 
 void main() {
-    colour = texture(texture1, TexCoords) * vec4(meshColor, 0.0);
+    vec4 textureColor = texture(textureSampler, TexCoords);
+    colour = textureColor * vec4(instanceColor, 1.0);
 }

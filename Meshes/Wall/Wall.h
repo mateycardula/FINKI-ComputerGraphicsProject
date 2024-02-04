@@ -4,6 +4,7 @@
 
 #ifndef OPENGL_WALL_H
 #define OPENGL_WALL_H
+#define GLM_ENABLE_EXPERIMENTAL
 
 
 #include "../Cube/Cube.h"
@@ -13,8 +14,6 @@ class Wall : public Cube {
 public:
     Wall();
     void Create(float gridSize);
-
-    void ApplyTransformation(const glm::vec3& scale) override;
 private:
 
 };

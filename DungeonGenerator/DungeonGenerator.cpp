@@ -68,13 +68,7 @@ void DungeonGenerator::setGridDepth(int gridDepth) {
     DungeonGenerator::gridDepth = gridDepth;
 }
 
-void DungeonGenerator::setFloorLayout(std::vector<Tile> &floorLayout) {
-    std::cout<<"TILE MAP SIZE "<<tilesMap.size();
-    DungeonGenerator::floorLayout = floorLayout;
-}
-
 DungeonGenerator::DungeonGenerator(int maxTiles, int gridWidth, int gridDepth, float gridSize) {
-    std::cout<<"Tuka";
     this->maxTiles = maxTiles;
     this->gridWidth = gridWidth;
     this->gridDepth = gridDepth;
@@ -84,19 +78,16 @@ DungeonGenerator::DungeonGenerator(int maxTiles, int gridWidth, int gridDepth, f
 
 }
 
-std::vector<DungeonGenerator::Tile> DungeonGenerator::createFloorLayout() {
-    std::cout<<"TUka";
-    int i = 0;
-    std::vector<Tile> tiles;
+void DungeonGenerator::createFloorLayout() {
     srand(time(nullptr));
 
-
     Tile seed = {gridWidth / 2, gridDepth / 2};
-    tiles.push_back(seed);
     addTile(seed.x, seed.y, seed);
-    while (tiles.size() < maxTiles) {
-        int expandIndex = rand() % tiles.size();
-        Tile base = tiles[expandIndex];
+    while (tilesMap.size() < maxTiles) {
+        int expandIndex = rand() % tilesMap.size();
+        auto it = std::begin(tilesMap);
+        std::advance(it, expandIndex);
+        Tile base = it->second;
 
         int direction = rand() % 4;
         Tile newTile = base;
@@ -108,197 +99,107 @@ std::vector<DungeonGenerator::Tile> DungeonGenerator::createFloorLayout() {
         }
 
         if (newTile.x >= 0 && newTile.x < gridWidth && newTile.y >= 0 && newTile.y < gridDepth &&
-            !tileExists(tiles, newTile.x, newTile.y)) {
-            tiles.push_back(newTile);
+            !findTile(newTile.x, newTile.y)) {
             addTile(newTile.x, newTile.y, newTile);
         }
     }
-
-    setFloorLayout(tiles);
-    return tiles;
 }
 
 void DungeonGenerator::placeWalls() {
-    for (const auto& tile : floorLayout) {
-        bool hasLeftNeighbor = std::find(floorLayout.begin(), floorLayout.end(), Tile{tile.x - 1, tile.y}) != floorLayout.end();
-        bool hasRightNeighbor = std::find(floorLayout.begin(), floorLayout.end(), Tile{tile.x + 1, tile.y}) != floorLayout.end();
-        bool hasTopNeighbor = std::find(floorLayout.begin(), floorLayout.end(), Tile{tile.x, tile.y - 1}) != floorLayout.end();
-        bool hasBottomNeighbor = std::find(floorLayout.begin(), floorLayout.end(), Tile{tile.x, tile.y + 1}) != floorLayout.end();
+    static const float dx[4] = {0, 0.5f, 0, -0.5f};
+    static const float dy[4] = {-0.5f, 0, 0.5f, 0};
 
+    static const int dxt[4] = {0, 1, 0, -1};
+    static const int dyt[4] = {-1, 0, 1, 0};
 
-        glm::vec3 wallColor = glm::vec3(1.0f, 1.0f, 1.0f);
-        glm::vec3 wallPosition;
-        glm::vec3 wallRotation;
-
-        if (!hasLeftNeighbor) {
-            walls.push_back(Wall{glm::vec2(tile.x - 0.5f, tile.y), LEFT});
-        }
-        if (!hasRightNeighbor) {
-            walls.push_back(Wall{glm::vec2 (tile.x+0.5f, tile.y), RIGHT});
-        }
-        if (!hasTopNeighbor) {
-            walls.push_back(Wall{glm::vec2 (tile.x, tile.y - 0.5f), TOP});
-        }
-        if (!hasBottomNeighbor) {
-            walls.push_back(Wall{glm::vec2 (tile.x, tile.y + 0.5f), BOTTOM});
+    for (const auto& pair : tilesMap){
+        Tile tile = pair.second;
+        int x = pair.first.first;
+        int y = pair.first.second;
+        for(int i = 0; i < 4; i++){
+            Tile* neighbor = findTile(x + dxt[i], y + dyt[i]);
+            if (!neighbor) {
+                Wall wall;
+                wall.rotation = 90.0f * i;
+                addWall((float)x + dx[i], y + dy[i], wall);
+            }
         }
     }
 
-    static const float dx[4] = {0, 0.5f, 0, -0.5f};
-    static const float dy[4] = {-0.5f, 0, 0.5f, 0};
-    bool placedDoor;
-    bool hasNeighbourDoor;
-    int j = 0;
-    std::ostringstream oss;
-    for (const auto& room : rooms) {
-        j++;
-        std::vector<Wall*> myWalls;
-        myWalls.clear();
-        std::vector<Wall*> neigbourWalls;
-        neigbourWalls.clear();
-        placedDoor = false;
-        hasNeighbourDoor = false;
-        Wall* foundWall;
-        for(Tile tile: room.tiles){
-            glm::vec2  pos;
-            Direction dir;
+    std::cout<<"ROOM NO: "<<rooms.size();
 
-            for(int i = 0; i<4; i++){
-                float wallx = tile.x + dx[i], wallY = tile.y + dy[i];
-                pos = {wallx, wallY};
-                switch (i) {
-                    case 0:
-                        dir = TOP;
-                        if(std::find(room.tiles.begin(), room.tiles.end(), Tile{tile.x , tile.y - 1}) != room.tiles.end()) {
-                            continue;
-                        }
-                        break;
-                    case 1:
-                        dir = RIGHT;
-                        if(std::find(room.tiles.begin(), room.tiles.end(), Tile{tile.x + 1, tile.y}) != room.tiles.end()) {
-                            continue;
-                        }
-                        break;
-                    case 2:
-                        dir = BOTTOM;
-                        if(std::find(room.tiles.begin(), room.tiles.end(), Tile{tile.x, tile.y + 1}) != room.tiles.end()) {
-                            continue;
-                        }
-                        break;
-                    case 3:
-                        dir = LEFT;
+    for(const auto& room : rooms){
 
-                        if(std::find(room.tiles.begin(), room.tiles.end(), Tile{tile.x - 1, tile.y}) != room.tiles.end()) {
-                            continue;
-                        }
-                        break;
-                }
+        std::vector<Wall> myWalls;
+        std::vector<Wall *> neigbouringWalls;
 
-                foundWall = findWall(pos);
-                if(foundWall == nullptr){
-                    Wall* newWall = new Wall{pos, dir};
-                    newWall->isInnerWall = true;
-                    if(rand()%100 < 2){
-                        newWall->isDoorWay = true;
-                        placedDoor = true;
+        bool placedDoor = false;
+        bool foundDoor = false;
+
+        for(auto& tile : room.tiles){
+            int x = tile.x;
+            int y = tile.y;
+            for(int i = 0; i < 4; i++){
+                Tile* neighbor = findTile(x + dxt[i], y + dyt[i]);
+                if(neighbor){
+                    if(neighbor->roomID == tile.roomID) continue;
+
+                    Wall* foundWall = findWall(x + dx[i], y + dy[i]);
+                    if(foundWall) {
+                        if(foundWall->isDoorWay) foundDoor = true;
+                        neigbouringWalls.push_back(foundWall);
                     }
-                    myWalls.push_back(newWall);
-                }
-                else{
-                    if(foundWall->isInnerWall)
-                        neigbourWalls.push_back(foundWall);
-                    if(foundWall->isDoorWay) {
-                        hasNeighbourDoor = true;
+                    else{
+                        Wall newWall;
+                        newWall.rotation =  90.0f * i;
+                        newWall.position = {x + dx[i], y + dy[i]};
+                        if(rand()%100 < 10){
+                            newWall.isDoorWay = true;
+                            placedDoor = true;
+                        }
+                        myWalls.push_back(newWall);
+                        addWall(x + dx[i], y + dy[i], newWall);
                     }
                 }
             }
-
         }
 
         if(!placedDoor && !myWalls.empty()){
-            std::cout<<logWithTimestamp(" PLACING A DOORWAY "  + std::to_string(j))<<std::endl<<std::flush;
             size_t index = static_cast<size_t>(rand()) % myWalls.size();
-            myWalls.at(index)->isDoorWay = true;
+            Wall wall = myWalls.at(index);
+            findWall(wall.position.x, wall.position.y)->isDoorWay = true;
         }
 
-        if(!hasNeighbourDoor && !neigbourWalls.empty()){
-            std::cout<<logWithTimestamp("PLACING NEIGHBOURDOOR, AS THERE IS NO CONNECTION TO A NEIGHBOUR " + std::to_string(j))<<std::endl<<std::flush;
-            size_t index = static_cast<size_t>(rand()) % neigbourWalls.size();
-            neigbourWalls.at(index)->isDoorWay = true;
-        }
-
-        for(Wall* wall : myWalls){
-            walls.push_back(*wall);
-        }
-
-        std::cout<<myWalls.size()<<std::endl;
-        std::cout<<"NEIGHBOURS "<<neigbourWalls.size()<<std::endl;
-    }
-    std::cout<<"WALLS: "<<walls.size();
-
-}
-
-bool DungeonGenerator::tileExists(const std::vector<Tile> &tiles, int x, int y) {
-    for (const auto& tile : tiles) {
-        if (tile.x == x && tile.y == y) {
-            return true;
+        if(!foundDoor && !neigbouringWalls.empty()){
+            size_t index = static_cast<size_t>(rand()) % neigbouringWalls.size();
+            neigbouringWalls.at(index)->isDoorWay = true;
         }
     }
-    return false;
 }
 
 void DungeonGenerator::generateRooms(std::vector<Mesh *> &sceneMeshes) {
-    std::cout<<"FLOORS: "<<floorLayout.size();
-
     std::random_device rd;
     std::mt19937 gen(rd());
-
-
     std::uniform_real_distribution<> dis(0.0, 1.0);
-    std::uniform_real_distribution<> y_dis(-1.0, 4.0);
-
 
     for (const auto& pair : tilesMap){
         Tile* floorTile = findTile(pair.first.first, pair.first.second);
         if(floorTile->roomID==-1){
             roomID++;
             floorTile->roomID = roomID;
-
             glm::vec3 roomColor = {dis(gen), dis(gen), dis(gen)};
+
             expandRoom(floorTile, roomColor);
 
         }
     }
-//    for(Tile& floorTile : floorLayout){
-//        if(!isRoomTIle(floorTile)){
-//            if(rand() % 100 < 20){
-//                Room room;
-//                room.color = glm::vec3(dis(gen), dis(gen), dis(gen));
-//                room.y_val = y_dis(gen);
-//                room.tiles.push_back(floorTile);
-//                expandRoom(room, sceneMeshes);
-//                rooms.push_back(room);
-//            }
-//        }
-//    }
-}
-
-
-bool DungeonGenerator::isRoomTIle(DungeonGenerator::Tile tile) {
-    for(auto& room : DungeonGenerator::rooms){
-        for(Tile roomTile : room.tiles){
-            if(tile == roomTile) {
-                return true; }
-        }
-    }
-    return false;
 }
 
 void DungeonGenerator::expandRoom(Tile* root, glm::vec3 roomColor){
+    Room room;
+    room.tiles.push_back(*root);
+
     int i = 0;
-    std::random_device rd;
-    std::mt19937 gen(rd());
-    std::uniform_real_distribution<> y_dis(-1.0, 4.0);
     root->color = roomColor;
 
     Tile inspectingTile = *root;
@@ -308,46 +209,21 @@ void DungeonGenerator::expandRoom(Tile* root, glm::vec3 roomColor){
             if(newTile != nullptr){
                 newTile->roomID = roomID;
                 newTile->color = roomColor;
+                room.tiles.push_back(*newTile);
                 inspectingTile = *newTile;
                 i++;
             }
             else{
+                rooms.push_back(room);
                 return;
             }
 
         }
-        else return;
+        else {
+            rooms.push_back(room);
+            return;
+        }
     }
-
-
-    //    Tile inspectingTile = room.tiles.at(0);
-//    bool loop = true;
-//    while(loop){
-//        inspectingTile.color = room.color;
-//        if(rand() % 100 < 90){
-//            std::unique_ptr<Tile> newTile(getFreeNeighbor(inspectingTile));
-//            if(newTile != nullptr){
-//                room.tiles.push_back(*newTile);
-//                inspectingTile = *newTile;
-//            }
-//            else{
-//                return;
-//            }
-//        }
-//        else{
-//            return;
-//        }
-//    }
-
-
-}
-
-bool DungeonGenerator::isInBounds(int x, int y) {
-    Tile inspectingTile = Tile{x, y};
-    for(Tile floor: floorLayout){
-        if(inspectingTile == floor) return true;
-    }
-    return false;
 }
 
 DungeonGenerator::Tile *DungeonGenerator::getFreeNeighbor(int x, int y) {
@@ -371,60 +247,47 @@ DungeonGenerator::Tile *DungeonGenerator::getFreeNeighbor(int x, int y) {
     return tiles.at(index);
 }
 
-DungeonGenerator::Wall* DungeonGenerator::findWall(glm::vec2 position) {
-    Wall cmp{position};
-    for(Wall& wall : walls){
-        if(wall == cmp) {
-            return &wall;
-        }
-    }
-    return nullptr;
-}
 
-void DungeonGenerator::fetchFloorMeshes(std::vector<Mesh *> &sceneMeshes) {
+void DungeonGenerator::fetchFloorMeshes(std::vector<glm::mat4> &modelMatrices, std::vector<glm::vec3> &colors) {
     for (const auto& pair : tilesMap){
         int x = pair.first.first;
         int z = pair.first.second;
         Tile tile = pair.second;
 
-        sceneMeshes.push_back(MeshProducer()
-                                      .withColor(tile.color)
-                                      .atPosition(glm::vec3(x * 3.0f - (gridWidth/2)*3 , -2.0f, z * 3.0f - (gridDepth/2)*3))
-                                      .withTexture(floorTexture)
-                                      .CreateFloor(gridSize));
+        Mesh * floor = MeshProducer()
+                .withColor(tile.color)
+                .atPosition(glm::vec3(x * 3.0f - (gridWidth/2)*3 , -2.0f, z * 3.0f - (gridDepth/2)*3))
+                .withTexture(floorTexture)
+                .CreateFloor(gridSize);
+
+        modelMatrices.push_back(floor->modelMatrix);
+        colors.push_back(floor->getColor());
     }
 }
 
-void DungeonGenerator::fetchOuterWallMeshes(std::vector<Mesh *> &sceneMeshes) {
+void DungeonGenerator::fetchOuterWallMeshes(std::vector<glm::mat4> &modelMatrices, std::vector<glm::vec3> &colors) {
     glm::vec3 wallRotation;
 
-    for(Wall wall : walls){
-        float actualX = wall.position.x * 3.0f - (gridWidth/2)*3;
-        float actualZ = wall.position.y * 3.0f - (gridDepth/2)*3;
+    for(const auto& pair : wallsMap){
+        float x = pair.first.first;
+        float z = pair.first.second;
+        Wall wall = pair.second;
+
+        float actualX = x * 3.0f - (gridWidth/2)*3;
+        float actualZ = z * 3.0f - (gridDepth/2)*3;
+
         if(wall.isDoorWay) wall.color = {0.5f, 1.0f, 0.2f};
-        switch (wall.dir) {
-            case LEFT:
-                wallRotation = wall.leftRotation;
-                break;
-            case RIGHT:
-                wallRotation = wall.rightRotation;
-                break;
-            case TOP:
-                wallRotation = wall.topRotation;
-                break;
-            case BOTTOM:
-                wallRotation = wall.bottomRotation;
-                break;
-        }
 
-        sceneMeshes.push_back(MeshProducer()
-                                      .withColor(wall.color)
-                                      .withRotation(wallRotation)
-                                      .atPosition(glm::vec3(actualX , -0.5f, actualZ))
-                                      .withTexture(wallTexture)
-                                      .CreateWall(gridSize));
+        Mesh* newWall = MeshProducer()
+                    .withColor(wall.color)
+                    .withRotation(wall.rotation)
+                    .atPosition(glm::vec3(actualX , -0.5f, actualZ))
+                    .withTexture(wallTexture)
+                    .CreateWall(gridSize);
+
+        modelMatrices.push_back(newWall->modelMatrix);
+        colors.push_back(newWall->getColor());
     }
-
 }
 
 

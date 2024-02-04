@@ -4,10 +4,11 @@
 
 #ifndef OPENGL_FLOOR_H
 #define OPENGL_FLOOR_H
-
+#define GLM_ENABLE_EXPERIMENTAL
 
 #include "../Cube/Cube.h"
 #include <glm.hpp>
+#include "gtx/string_cast.hpp"
 
 class Floor : public Cube {
 public:

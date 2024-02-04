@@ -13,6 +13,7 @@
 #include "DungeonGenerator/DungeonGenerator.h"
 #include "Include/stb_image.h"
 #include "Meshes/Texture.h"
+#include "Meshes/GeometryManager.h"
 
 using namespace std;
 
@@ -20,6 +21,12 @@ const GLint WIDTH = 800, HEIGHT = 600;
 
 
 std::vector<Mesh*> sceneMeshes;
+
+void render(const std::vector<glm::mat4>& modelMatrices, const std::vector<glm::vec3> &colors) {
+    GeometryManager::getInstance()->updateInstanceModelMatrices(modelMatrices);
+    GeometryManager::getInstance()->updateColorVector(colors);
+    glDrawArraysInstanced(GL_TRIANGLES, 0, 36, modelMatrices.size()); // 36 vertices for a cube
+}
 
 
 int main(){
@@ -34,28 +41,48 @@ int main(){
         return -1;
     }
 
+
+    glEnable(GL_DEPTH_TEST);
+
     Shader myShader("../Shaders/vShader.txt", "../Shaders/fShader.txt");
     MeshProducer meshProducer;
     ImGuiManager imguiManager(mainWindow);  // Initialize ImGui
     UI ui(WIDTH, HEIGHT);
     Raycaster raycaster(app);
 
-    glActiveTexture(GL_TEXTURE0);
-    glEnable(GL_DEPTH_TEST);
+    Texture floorTexture = Texture("C:\\Users\\mateycardula\\CLionProjects\\OpenGL\\tex.jpg");
+    Texture wallTexture = Texture("C:\\Users\\mateycardula\\CLionProjects\\OpenGL\\t.png");
 
-    int maxTiles = 1600;
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, floorTexture.textureID);
+
+    glActiveTexture(GL_TEXTURE1);
+    glBindTexture(GL_TEXTURE_2D, wallTexture.textureID);
+
+    int maxTiles = 5000;
     int gridWidth = 500;
     int gridDepth = 100;
     float gridSize = 3;
 
+
+    std::vector<glm::mat4> floorInstanceMatrices;
+    std::vector<glm::vec3> floorInstanceColors;
+
+    std::vector<glm::mat4> wallInstanceMatrices;
+    std::vector<glm::vec3> wallInstanceColors;
+
     DungeonGenerator generator = *new DungeonGenerator(maxTiles, gridWidth, gridDepth, gridSize);
     generator.createFloorLayout();
     generator.generateRooms(sceneMeshes);
-    generator.fetchFloorMeshes(sceneMeshes);
-   // generator.placeWalls();
-    //generator.fetchOuterWallMeshes(sceneMeshes);
+    generator.fetchFloorMeshes(floorInstanceMatrices, floorInstanceColors);
 
 
+    generator.placeWalls();
+
+    generator.fetchOuterWallMeshes(wallInstanceMatrices, wallInstanceColors);
+
+    GLuint cubeVAO = GeometryManager::getInstance()->getCubeVAO();
+    glBindVertexArray(cubeVAO);
 
     float lastFrame = 0.0f;
 
@@ -70,39 +97,23 @@ int main(){
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         myShader.Use();
-
         glm::mat4 view = app.camera.GetViewMatrix();
         myShader.setMat4("view", view);
 
         glm::mat4 projection = app.camera.getProjectionMatrix();
         myShader.setMat4("projection", projection);
 
+        myShader.setInt("textureSampler", 0);
+        render(floorInstanceMatrices, floorInstanceColors);
 
-
-        for (Mesh* mesh : sceneMeshes) {
-            AABB box = mesh->getBoundingBox();
-//            if (raycaster.intersectsWithAABB(box)) {
-//                myShader.setVec3("meshColor", glm::vec3(0.2f, 0.5f, 0.2f));
-//            } else {
-//                myShader.setVec3("meshColor", mesh->getColor());
-//            }
-
-            glm::vec3 rotation = mesh->getRotation();
-
-            glm::mat4 rotX = glm::rotate(glm::mat4(1.0f), glm::radians(rotation.x), glm::vec3(1.0f, 0.0f, 0.0f));
-            glm::mat4 rotY = glm::rotate(glm::mat4(1.0f), glm::radians(rotation.y), glm::vec3(0.0f, 1.0f, 0.0f));
-            glm::mat4 rotZ = glm::rotate(glm::mat4(1.0f), glm::radians(rotation.z), glm::vec3(0.0f, 0.0f, 1.0f));
-
-            glm::mat4 rotationMatrix = rotZ * rotY * rotX;
-            glm::mat4 model = glm::translate(glm::mat4(1.0f), mesh->getPosition()) * rotationMatrix;
-            myShader.setMat4("model", model);
-            mesh->Render(myShader);
-        }
-
+        myShader.setInt("textureSampler", 1);
+        render(wallInstanceMatrices, wallInstanceColors);
         ui.render();
 
         glfwSwapBuffers(mainWindow);
         glfwPollEvents();
+
+
     }
 
     glfwDestroyWindow(mainWindow);
