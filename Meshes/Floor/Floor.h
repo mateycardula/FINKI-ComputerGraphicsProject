@@ -6,13 +6,13 @@
 #define OPENGL_FLOOR_H
 #define GLM_ENABLE_EXPERIMENTAL
 
-#include "../Cube/Cube.h"
+#include "../Mesh.h"
 #include <glm.hpp>
 #include "gtx/string_cast.hpp"
 
-class Floor : public Cube {
+class Floor : public Mesh {
 public:
-    Floor();
+    void Create() override;
     void Create(float gridSize);
 private:
 

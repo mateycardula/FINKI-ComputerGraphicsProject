@@ -9,11 +9,6 @@
 Mesh::Mesh() {
 }
 
-
-void Mesh::ApplyTransformation(const glm::vec3& scale) {
-    // Implement transformation logic if necessary
-}
-
 void Mesh::setColor(const glm::vec3& newColor) {
     color = newColor;
 }
@@ -36,13 +31,5 @@ void Mesh::setRotation(const float newRotation) {
 
 float Mesh::getRotation() const {
     return rotation;
-}
-
-void Mesh::setTexture(const Texture &texture) {
-    Mesh::texture = texture;
-}
-
-const Texture &Mesh::getTexture() const {
-    return texture;
 }
 

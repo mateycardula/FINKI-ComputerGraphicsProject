@@ -22,7 +22,7 @@ GeometryManager* GeometryManager::getInstance() {
 
 void GeometryManager::setupCubeGeometry() {
     float vertices[] = {
-            // Positions          // Texture Coords
+            // Positions                      // Texture Coords
             // Back face
             -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
             0.5f, -0.5f, -0.5f,  1.0f, 0.0f,

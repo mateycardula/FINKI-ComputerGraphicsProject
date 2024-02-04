@@ -14,14 +14,32 @@
 class UI {
 public:
     UI(int width, int height);
-    void render();
-    void startDraw();
-    void endDraw();
+    static void render();
+    static void startDraw();
+    static void endDraw();
+    static bool debugMode;
+    static bool renderWalls;
+    static bool regenerate;
+    static bool generatingWalls;
+
+    static int MAX_TILES;
+    static int MAX_WIDTH;
+    static int MAX_DEPTH;
+
+    static int numWalls;
+    static int numFloors;
+    static int FPS;
+
+    static int width;
+    static int height;
+
 
 private:
-    int width;
-    int height;
-    void drawCrosshair();
+    static void drawDebugCheckbox();
+    static void drawRenderWallsCheckbox();
+    static void drawGenerationSettings();
+    static void writeText();
+    static void drawMeshesCount();
 };
 
 

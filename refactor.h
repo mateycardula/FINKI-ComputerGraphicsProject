@@ -14,7 +14,6 @@
 #include "Shaders/Shader.h"
 #include "Meshes/Mesh.h"
 #include "Meshes/Types/ShapeType.h"
-#include "Meshes/Factory/MeshFactory.h"
 #include "Camera/Camera.h"
 #include "Input/InputManager.h"
 

@@ -2,62 +2,17 @@
 #include <iostream>
 #include <random>
 #include "DungeonGenerator.h"
-#include "../Meshes/Factory/Produce/MeshProducer.h"
+#include "../Meshes/Factory/Produce/MeshBuilder.h"
+#include "../Camera/UI/UI.h"
 #include <chrono>
 #include <iomanip>
 
-
-Texture DungeonGenerator::wallTexture;
-Texture DungeonGenerator::floorTexture;
 float DungeonGenerator::gridSize;
 int roomID = -1;
 
-
-std::string getCurrentTimestamp() {
-    // Get current time
-    auto now = std::chrono::system_clock::now();
-
-    // Convert to a time_t object
-    auto now_time_t = std::chrono::system_clock::to_time_t(now);
-
-    // Convert to tm struct for local timezone
-    tm local_tm;
-    localtime_s(&local_tm, &now_time_t); // Use localtime_r in Unix-based systems
-
-    // Create a stringstream to format the string
-    std::stringstream ss;
-    ss << std::put_time(&local_tm, "%Y-%m-%d %H:%M:%S"); // Format: YYYY-MM-DD HH:MM:SS
-
-    return ss.str();
-}
-
-// Example of using the function in a log statement
-std::string logWithTimestamp(const std::string& message) {
-    auto now = std::chrono::system_clock::now();
-    auto now_as_time_t = std::chrono::system_clock::to_time_t(now);
-    auto local_tm = *std::localtime(&now_as_time_t);
-
-    // Getting milliseconds.
-    auto milliseconds = std::chrono::duration_cast<std::chrono::milliseconds>(now.time_since_epoch()) % 1000;
-
-    // Constructing the timestamp string.
-    std::ostringstream ss;
-    ss << std::put_time(&local_tm, "%Y-%m-%d %H:%M:%S");
-    ss << '.' << std::setfill('0') << std::setw(3) << milliseconds.count();
-
-    // Add the message.
-    ss << " - " << message;
-
-    return ss.str();
-}
-
-
-bool DungeonGenerator::Tile::operator==(const DungeonGenerator::Tile &other) const {
-    return x == other.x && y == other.y;
-}
-
 void DungeonGenerator::setMaxTiles(int maxTiles) {
     DungeonGenerator::maxTiles = maxTiles;
+
 }
 
 void DungeonGenerator::setGridWidth(int gridWidth) {
@@ -69,21 +24,21 @@ void DungeonGenerator::setGridDepth(int gridDepth) {
 }
 
 DungeonGenerator::DungeonGenerator(int maxTiles, int gridWidth, int gridDepth, float gridSize) {
-    this->maxTiles = maxTiles;
-    this->gridWidth = gridWidth;
-    this->gridDepth = gridDepth;
-    this->floorTexture = Texture("../tex.jpg");
-    this->wallTexture = Texture("../t.png");
     this->gridSize = gridSize;
+    UI::MAX_WIDTH = gridWidth;
+    UI::MAX_DEPTH = gridDepth;
+    UI::MAX_TILES = maxTiles;
+    regenerate(maxTiles, gridWidth, gridDepth);
 
 }
 
 void DungeonGenerator::createFloorLayout() {
     srand(time(nullptr));
 
+    int tileLimit = gridWidth * gridDepth;
     Tile seed = {gridWidth / 2, gridDepth / 2};
     addTile(seed.x, seed.y, seed);
-    while (tilesMap.size() < maxTiles) {
+    while (tilesMap.size() < maxTiles && tilesMap.size() < tileLimit) {
         int expandIndex = rand() % tilesMap.size();
         auto it = std::begin(tilesMap);
         std::advance(it, expandIndex);
@@ -125,8 +80,6 @@ void DungeonGenerator::placeWalls() {
             }
         }
     }
-
-    std::cout<<"ROOM NO: "<<rooms.size();
 
     for(const auto& room : rooms){
 
@@ -177,7 +130,7 @@ void DungeonGenerator::placeWalls() {
     }
 }
 
-void DungeonGenerator::generateRooms(std::vector<Mesh *> &sceneMeshes) {
+void DungeonGenerator::generateRooms() {
     std::random_device rd;
     std::mt19937 gen(rd());
     std::uniform_real_distribution<> dis(0.0, 1.0);
@@ -190,7 +143,6 @@ void DungeonGenerator::generateRooms(std::vector<Mesh *> &sceneMeshes) {
             glm::vec3 roomColor = {dis(gen), dis(gen), dis(gen)};
 
             expandRoom(floorTile, roomColor);
-
         }
     }
 }
@@ -249,15 +201,17 @@ DungeonGenerator::Tile *DungeonGenerator::getFreeNeighbor(int x, int y) {
 
 
 void DungeonGenerator::fetchFloorMeshes(std::vector<glm::mat4> &modelMatrices, std::vector<glm::vec3> &colors) {
+
+    modelMatrices.clear();
+    colors.clear();
     for (const auto& pair : tilesMap){
         int x = pair.first.first;
         int z = pair.first.second;
         Tile tile = pair.second;
 
-        Mesh * floor = MeshProducer()
+        Mesh * floor = MeshBuilder()
                 .withColor(tile.color)
                 .atPosition(glm::vec3(x * 3.0f - (gridWidth/2)*3 , -2.0f, z * 3.0f - (gridDepth/2)*3))
-                .withTexture(floorTexture)
                 .CreateFloor(gridSize);
 
         modelMatrices.push_back(floor->modelMatrix);
@@ -265,9 +219,11 @@ void DungeonGenerator::fetchFloorMeshes(std::vector<glm::mat4> &modelMatrices, s
     }
 }
 
-void DungeonGenerator::fetchOuterWallMeshes(std::vector<glm::mat4> &modelMatrices, std::vector<glm::vec3> &colors) {
+void DungeonGenerator::fetchWallMeshes(std::vector<glm::mat4> &modelMatrices, std::vector<glm::vec3> &colors) {
     glm::vec3 wallRotation;
 
+    modelMatrices.clear();
+    colors.clear();
     for(const auto& pair : wallsMap){
         float x = pair.first.first;
         float z = pair.first.second;
@@ -275,22 +231,41 @@ void DungeonGenerator::fetchOuterWallMeshes(std::vector<glm::mat4> &modelMatrice
 
         float actualX = x * 3.0f - (gridWidth/2)*3;
         float actualZ = z * 3.0f - (gridDepth/2)*3;
-
-        if(wall.isDoorWay) wall.color = {0.5f, 1.0f, 0.2f};
-
-        Mesh* newWall = MeshProducer()
+        Mesh* newWall;
+        if(wall.isDoorWay) {
+            wall.color = {0.5f, 1.0f, 0.2f};
+            newWall = MeshBuilder()
                     .withColor(wall.color)
                     .withRotation(wall.rotation)
                     .atPosition(glm::vec3(actualX , -0.5f, actualZ))
-                    .withTexture(wallTexture)
+                    .CreateDoor(gridSize);
+
+        }
+        else {
+            newWall = MeshBuilder()
+                    .withColor(wall.color)
+                    .withRotation(wall.rotation)
+                    .atPosition(glm::vec3(actualX, -0.5f, actualZ))
                     .CreateWall(gridSize);
+        }
 
         modelMatrices.push_back(newWall->modelMatrix);
         colors.push_back(newWall->getColor());
     }
 }
 
+void DungeonGenerator::regenerate(int maxTiles, int gridWidth, int gridDepth) {
+    roomID = -1;
+    UI::generatingWalls = true;
+    UI::render();
+    tilesMap.clear();
+    wallsMap.clear();
+    rooms.clear();
 
-bool DungeonGenerator::Wall::operator==(const DungeonGenerator::Wall &other) const {
-    return position.x == other.position.x && position.y == other.position.y;
+    setMaxTiles(maxTiles);
+    setGridWidth(gridWidth);
+    setGridDepth(gridDepth);
+    createFloorLayout();
+    generateRooms();
+    placeWalls();
 }

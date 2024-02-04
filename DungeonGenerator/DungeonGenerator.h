@@ -1,7 +1,3 @@
-//
-// Created by mateycardula on 1/26/2024.
-//
-
 #ifndef OPENGL_DUNGEONGENERATOR_H
 #define OPENGL_DUNGEONGENERATOR_H
 
@@ -9,7 +5,7 @@
 #include <vector>
 #include "../Meshes/Mesh.h"
 #include "algorithm"
-#include "../Meshes/Factory/Produce/MeshProducer.h"
+#include "../Meshes/Factory/Produce/MeshBuilder.h"
 #include <optional>
 #include <unordered_map>
 #include <utility>
@@ -38,10 +34,6 @@ public:
     struct Tile {
         int x, y;
         glm::vec3 color = {1.0f, 1.0f, 1.0f};
-        bool operator==(const Tile& other) const;
-        bool operator<(const Tile& other) const {
-            return x < other.x || (x == other.x && y < other.y);
-        }
         int roomID = -1;
     };
 
@@ -52,21 +44,17 @@ public:
     struct Wall{
         glm::vec2 position;
         bool isDoorWay = false;
-        bool isInnerWall = false;
-
         float rotation = 0.0f;
         glm::vec3 color = {1.0f, 1.0f, 1.0f};
-        bool operator==(const Wall& other) const;
     };
 
 
-
-
     DungeonGenerator(int maxTiles, int gridWidth, int gridDepth, float gridSize);
+    void regenerate(int maxTiles, int gridWidth, int gridDepth);
+
     void createFloorLayout();
     void placeWalls();
-
-    void generateRooms(std::vector<Mesh *> &sceneMeshes);
+    void generateRooms();
     void expandRoom(Tile* inspectingTile, glm::vec3 roomColor);
 
 
@@ -75,20 +63,14 @@ public:
     void setGridDepth(int gridDepth);
 
 
-
     Tile* getFreeNeighbor(int x, int y);
-
     void fetchFloorMeshes(std::vector<glm::mat4> &modelMatrices, std::vector<glm::vec3> &colors);
-    void fetchOuterWallMeshes(std::vector<glm::mat4> &modelMatrices, std::vector<glm::vec3> &colors);
-
+    void fetchWallMeshes(std::vector<glm::mat4> &modelMatrices, std::vector<glm::vec3> &colors);
 
 private:
     std::unordered_map<std::pair<int, int>, Tile> tilesMap;
     std::unordered_map<std::pair<float, float>, Wall> wallsMap;
 
-
-    static Texture wallTexture;
-    static Texture floorTexture;
     int maxTiles;
 
     int gridWidth;

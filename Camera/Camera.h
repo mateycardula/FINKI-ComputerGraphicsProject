@@ -13,7 +13,7 @@ enum Camera_Movement {
 
 class Camera {
 public:
-    Camera(glm::vec3 position, glm::vec3 up, float yaw, float pitch);
+    Camera(glm::vec3 position, glm::vec3 up, float yaw, float pitch, float aspect_ratio);
     Camera();
     glm::mat4 GetViewMatrix() const;
     void ProcessKeyboard(Camera_Movement direction, float deltaTime);
@@ -21,6 +21,8 @@ public:
 
     glm::vec3 getPosition() const;
     glm::mat4 getProjectionMatrix() const;
+
+    void setAspectRatio(float aspectRatio);
 
 private:
     glm::vec3 Position;

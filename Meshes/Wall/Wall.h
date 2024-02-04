@@ -4,15 +4,14 @@
 
 #ifndef OPENGL_WALL_H
 #define OPENGL_WALL_H
-#define GLM_ENABLE_EXPERIMENTAL
 
 
-#include "../Cube/Cube.h"
 #include <glm.hpp>
+#include "../Mesh.h"
 
-class Wall : public Cube {
+class Wall : public Mesh{
 public:
-    Wall();
+    void Create() override;
     void Create(float gridSize);
 private:
 

@@ -1,10 +1,11 @@
 #include "Camera.h"
 #include <gtc/matrix_transform.hpp>
+#include <iostream>
 
-Camera::Camera(glm::vec3 position, glm::vec3 up, float yaw, float pitch)
+Camera::Camera(glm::vec3 position, glm::vec3 up, float yaw, float pitch, float aspect_ratio)
         : Front(glm::vec3(0.0f, 0.0f, -1.0f)), MovementSpeed(2.5f), MouseSensitivity(0.1f),
           Position(position), WorldUp(up), Yaw(yaw), Pitch(pitch),
-          Fov(45.0f), AspectRatio(800.0f / 600.0f), NearPlane(0.1f), FarPlane(1000.0f) {
+          Fov(45.0f), AspectRatio(aspect_ratio), NearPlane(0.1f), FarPlane(1000.0f) {
     updateCameraVectors();
 }
 
@@ -57,4 +58,9 @@ glm::vec3 Camera::getPosition() const {
 
 glm::mat4 Camera::getProjectionMatrix() const {
     return glm::perspective(glm::radians(Fov), AspectRatio, NearPlane, FarPlane);
+}
+
+void Camera::setAspectRatio(float aspectRatio) {
+    std::cout<<"ASPECT ";
+    AspectRatio = aspectRatio;
 }

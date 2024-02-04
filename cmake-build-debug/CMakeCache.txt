@@ -157,7 +157,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=OpenGL
+CMAKE_PROJECT_NAME:STATIC=ProceduralGenerationFINKI
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/ranlib.exe
@@ -247,6 +247,24 @@ OpenGL_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
 OpenGL_SOURCE_DIR:STATIC=C:/Users/mateycardula/CLionProjects/OpenGL
+
+//Value Computed by CMake
+ProceduralGenerationFINKI_BINARY_DIR:STATIC=C:/Users/mateycardula/CLionProjects/OpenGL/cmake-build-debug
+
+//Value Computed by CMake
+ProceduralGenerationFINKI_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+ProceduralGenerationFINKI_SOURCE_DIR:STATIC=C:/Users/mateycardula/CLionProjects/OpenGL
+
+//Value Computed by CMake
+Procedural_BINARY_DIR:STATIC=C:/Users/mateycardula/CLionProjects/OpenGL/cmake-build-debug
+
+//Value Computed by CMake
+Procedural_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+Procedural_SOURCE_DIR:STATIC=C:/Users/mateycardula/CLionProjects/OpenGL
 
 //Value Computed by CMake
 Project_BINARY_DIR:STATIC=C:/Users/mateycardula/CLionProjects/OpenGL/cmake-build-debug

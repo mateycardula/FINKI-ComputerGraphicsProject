@@ -11,7 +11,7 @@
 # =============================================================================
 
 # =============================================================================
-# Project: OpenGL
+# Project: ProceduralGenerationFINKI
 # Configurations: Debug
 # =============================================================================
 
@@ -41,232 +41,217 @@ include CMakeFiles/rules.ninja
 
 cmake_ninja_workdir = C$:/Users/mateycardula/CLionProjects/OpenGL/cmake-build-debug/
 # =============================================================================
-# Object build statements for EXECUTABLE target OpenGL
+# Object build statements for EXECUTABLE target ProceduralGenerationFINKI
 
 
 #############################################
-# Order-only phony target for OpenGL
+# Order-only phony target for ProceduralGenerationFINKI
 
-build cmake_object_order_depends_target_OpenGL: phony || CMakeFiles/OpenGL.dir
+build cmake_object_order_depends_target_ProceduralGenerationFINKI: phony || CMakeFiles/ProceduralGenerationFINKI.dir
 
-build CMakeFiles/OpenGL.dir/main.cpp.obj: CXX_COMPILER__OpenGL_unscanned_Debug C$:/Users/mateycardula/CLionProjects/OpenGL/main.cpp || cmake_object_order_depends_target_OpenGL
+build CMakeFiles/ProceduralGenerationFINKI.dir/main.cpp.obj: CXX_COMPILER__ProceduralGenerationFINKI_unscanned_Debug C$:/Users/mateycardula/CLionProjects/OpenGL/main.cpp || cmake_object_order_depends_target_ProceduralGenerationFINKI
   DEFINES = -DGLEW_STATIC
-  DEP_FILE = CMakeFiles\OpenGL.dir\main.cpp.obj.d
+  DEP_FILE = CMakeFiles\ProceduralGenerationFINKI.dir\main.cpp.obj.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
   INCLUDES = -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glew/include -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glfw/include -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glm -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/imgui
-  OBJECT_DIR = CMakeFiles\OpenGL.dir
-  OBJECT_FILE_DIR = CMakeFiles\OpenGL.dir
+  OBJECT_DIR = CMakeFiles\ProceduralGenerationFINKI.dir
+  OBJECT_FILE_DIR = CMakeFiles\ProceduralGenerationFINKI.dir
 
-build CMakeFiles/OpenGL.dir/Include/imgui/imgui.cpp.obj: CXX_COMPILER__OpenGL_unscanned_Debug C$:/Users/mateycardula/CLionProjects/OpenGL/Include/imgui/imgui.cpp || cmake_object_order_depends_target_OpenGL
+build CMakeFiles/ProceduralGenerationFINKI.dir/Include/imgui/imgui.cpp.obj: CXX_COMPILER__ProceduralGenerationFINKI_unscanned_Debug C$:/Users/mateycardula/CLionProjects/OpenGL/Include/imgui/imgui.cpp || cmake_object_order_depends_target_ProceduralGenerationFINKI
   DEFINES = -DGLEW_STATIC
-  DEP_FILE = CMakeFiles\OpenGL.dir\Include\imgui\imgui.cpp.obj.d
+  DEP_FILE = CMakeFiles\ProceduralGenerationFINKI.dir\Include\imgui\imgui.cpp.obj.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
   INCLUDES = -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glew/include -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glfw/include -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glm -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/imgui
-  OBJECT_DIR = CMakeFiles\OpenGL.dir
-  OBJECT_FILE_DIR = CMakeFiles\OpenGL.dir\Include\imgui
+  OBJECT_DIR = CMakeFiles\ProceduralGenerationFINKI.dir
+  OBJECT_FILE_DIR = CMakeFiles\ProceduralGenerationFINKI.dir\Include\imgui
 
-build CMakeFiles/OpenGL.dir/Include/imgui/imgui_draw.cpp.obj: CXX_COMPILER__OpenGL_unscanned_Debug C$:/Users/mateycardula/CLionProjects/OpenGL/Include/imgui/imgui_draw.cpp || cmake_object_order_depends_target_OpenGL
+build CMakeFiles/ProceduralGenerationFINKI.dir/Include/imgui/imgui_draw.cpp.obj: CXX_COMPILER__ProceduralGenerationFINKI_unscanned_Debug C$:/Users/mateycardula/CLionProjects/OpenGL/Include/imgui/imgui_draw.cpp || cmake_object_order_depends_target_ProceduralGenerationFINKI
   DEFINES = -DGLEW_STATIC
-  DEP_FILE = CMakeFiles\OpenGL.dir\Include\imgui\imgui_draw.cpp.obj.d
+  DEP_FILE = CMakeFiles\ProceduralGenerationFINKI.dir\Include\imgui\imgui_draw.cpp.obj.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
   INCLUDES = -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glew/include -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glfw/include -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glm -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/imgui
-  OBJECT_DIR = CMakeFiles\OpenGL.dir
-  OBJECT_FILE_DIR = CMakeFiles\OpenGL.dir\Include\imgui
+  OBJECT_DIR = CMakeFiles\ProceduralGenerationFINKI.dir
+  OBJECT_FILE_DIR = CMakeFiles\ProceduralGenerationFINKI.dir\Include\imgui
 
-build CMakeFiles/OpenGL.dir/Include/imgui/imgui_widgets.cpp.obj: CXX_COMPILER__OpenGL_unscanned_Debug C$:/Users/mateycardula/CLionProjects/OpenGL/Include/imgui/imgui_widgets.cpp || cmake_object_order_depends_target_OpenGL
+build CMakeFiles/ProceduralGenerationFINKI.dir/Include/imgui/imgui_widgets.cpp.obj: CXX_COMPILER__ProceduralGenerationFINKI_unscanned_Debug C$:/Users/mateycardula/CLionProjects/OpenGL/Include/imgui/imgui_widgets.cpp || cmake_object_order_depends_target_ProceduralGenerationFINKI
   DEFINES = -DGLEW_STATIC
-  DEP_FILE = CMakeFiles\OpenGL.dir\Include\imgui\imgui_widgets.cpp.obj.d
+  DEP_FILE = CMakeFiles\ProceduralGenerationFINKI.dir\Include\imgui\imgui_widgets.cpp.obj.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
   INCLUDES = -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glew/include -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glfw/include -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glm -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/imgui
-  OBJECT_DIR = CMakeFiles\OpenGL.dir
-  OBJECT_FILE_DIR = CMakeFiles\OpenGL.dir\Include\imgui
+  OBJECT_DIR = CMakeFiles\ProceduralGenerationFINKI.dir
+  OBJECT_FILE_DIR = CMakeFiles\ProceduralGenerationFINKI.dir\Include\imgui
 
-build CMakeFiles/OpenGL.dir/Include/imgui/imgui_impl_glfw.cpp.obj: CXX_COMPILER__OpenGL_unscanned_Debug C$:/Users/mateycardula/CLionProjects/OpenGL/Include/imgui/imgui_impl_glfw.cpp || cmake_object_order_depends_target_OpenGL
+build CMakeFiles/ProceduralGenerationFINKI.dir/Include/imgui/imgui_impl_glfw.cpp.obj: CXX_COMPILER__ProceduralGenerationFINKI_unscanned_Debug C$:/Users/mateycardula/CLionProjects/OpenGL/Include/imgui/imgui_impl_glfw.cpp || cmake_object_order_depends_target_ProceduralGenerationFINKI
   DEFINES = -DGLEW_STATIC
-  DEP_FILE = CMakeFiles\OpenGL.dir\Include\imgui\imgui_impl_glfw.cpp.obj.d
+  DEP_FILE = CMakeFiles\ProceduralGenerationFINKI.dir\Include\imgui\imgui_impl_glfw.cpp.obj.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
   INCLUDES = -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glew/include -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glfw/include -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glm -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/imgui
-  OBJECT_DIR = CMakeFiles\OpenGL.dir
-  OBJECT_FILE_DIR = CMakeFiles\OpenGL.dir\Include\imgui
+  OBJECT_DIR = CMakeFiles\ProceduralGenerationFINKI.dir
+  OBJECT_FILE_DIR = CMakeFiles\ProceduralGenerationFINKI.dir\Include\imgui
 
-build CMakeFiles/OpenGL.dir/Include/imgui/imgui_impl_opengl3.cpp.obj: CXX_COMPILER__OpenGL_unscanned_Debug C$:/Users/mateycardula/CLionProjects/OpenGL/Include/imgui/imgui_impl_opengl3.cpp || cmake_object_order_depends_target_OpenGL
+build CMakeFiles/ProceduralGenerationFINKI.dir/Include/imgui/imgui_impl_opengl3.cpp.obj: CXX_COMPILER__ProceduralGenerationFINKI_unscanned_Debug C$:/Users/mateycardula/CLionProjects/OpenGL/Include/imgui/imgui_impl_opengl3.cpp || cmake_object_order_depends_target_ProceduralGenerationFINKI
   DEFINES = -DGLEW_STATIC
-  DEP_FILE = CMakeFiles\OpenGL.dir\Include\imgui\imgui_impl_opengl3.cpp.obj.d
+  DEP_FILE = CMakeFiles\ProceduralGenerationFINKI.dir\Include\imgui\imgui_impl_opengl3.cpp.obj.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
   INCLUDES = -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glew/include -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glfw/include -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glm -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/imgui
-  OBJECT_DIR = CMakeFiles\OpenGL.dir
-  OBJECT_FILE_DIR = CMakeFiles\OpenGL.dir\Include\imgui
+  OBJECT_DIR = CMakeFiles\ProceduralGenerationFINKI.dir
+  OBJECT_FILE_DIR = CMakeFiles\ProceduralGenerationFINKI.dir\Include\imgui
 
-build CMakeFiles/OpenGL.dir/Include/imgui/imgui_demo.cpp.obj: CXX_COMPILER__OpenGL_unscanned_Debug C$:/Users/mateycardula/CLionProjects/OpenGL/Include/imgui/imgui_demo.cpp || cmake_object_order_depends_target_OpenGL
+build CMakeFiles/ProceduralGenerationFINKI.dir/Include/imgui/imgui_demo.cpp.obj: CXX_COMPILER__ProceduralGenerationFINKI_unscanned_Debug C$:/Users/mateycardula/CLionProjects/OpenGL/Include/imgui/imgui_demo.cpp || cmake_object_order_depends_target_ProceduralGenerationFINKI
   DEFINES = -DGLEW_STATIC
-  DEP_FILE = CMakeFiles\OpenGL.dir\Include\imgui\imgui_demo.cpp.obj.d
+  DEP_FILE = CMakeFiles\ProceduralGenerationFINKI.dir\Include\imgui\imgui_demo.cpp.obj.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
   INCLUDES = -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glew/include -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glfw/include -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glm -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/imgui
-  OBJECT_DIR = CMakeFiles\OpenGL.dir
-  OBJECT_FILE_DIR = CMakeFiles\OpenGL.dir\Include\imgui
+  OBJECT_DIR = CMakeFiles\ProceduralGenerationFINKI.dir
+  OBJECT_FILE_DIR = CMakeFiles\ProceduralGenerationFINKI.dir\Include\imgui
 
-build CMakeFiles/OpenGL.dir/Include/imgui/imgui_tables.cpp.obj: CXX_COMPILER__OpenGL_unscanned_Debug C$:/Users/mateycardula/CLionProjects/OpenGL/Include/imgui/imgui_tables.cpp || cmake_object_order_depends_target_OpenGL
+build CMakeFiles/ProceduralGenerationFINKI.dir/Include/imgui/imgui_tables.cpp.obj: CXX_COMPILER__ProceduralGenerationFINKI_unscanned_Debug C$:/Users/mateycardula/CLionProjects/OpenGL/Include/imgui/imgui_tables.cpp || cmake_object_order_depends_target_ProceduralGenerationFINKI
   DEFINES = -DGLEW_STATIC
-  DEP_FILE = CMakeFiles\OpenGL.dir\Include\imgui\imgui_tables.cpp.obj.d
+  DEP_FILE = CMakeFiles\ProceduralGenerationFINKI.dir\Include\imgui\imgui_tables.cpp.obj.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
   INCLUDES = -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glew/include -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glfw/include -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glm -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/imgui
-  OBJECT_DIR = CMakeFiles\OpenGL.dir
-  OBJECT_FILE_DIR = CMakeFiles\OpenGL.dir\Include\imgui
+  OBJECT_DIR = CMakeFiles\ProceduralGenerationFINKI.dir
+  OBJECT_FILE_DIR = CMakeFiles\ProceduralGenerationFINKI.dir\Include\imgui
 
-build CMakeFiles/OpenGL.dir/init.cpp.obj: CXX_COMPILER__OpenGL_unscanned_Debug C$:/Users/mateycardula/CLionProjects/OpenGL/init.cpp || cmake_object_order_depends_target_OpenGL
+build CMakeFiles/ProceduralGenerationFINKI.dir/init.cpp.obj: CXX_COMPILER__ProceduralGenerationFINKI_unscanned_Debug C$:/Users/mateycardula/CLionProjects/OpenGL/init.cpp || cmake_object_order_depends_target_ProceduralGenerationFINKI
   DEFINES = -DGLEW_STATIC
-  DEP_FILE = CMakeFiles\OpenGL.dir\init.cpp.obj.d
+  DEP_FILE = CMakeFiles\ProceduralGenerationFINKI.dir\init.cpp.obj.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
   INCLUDES = -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glew/include -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glfw/include -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glm -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/imgui
-  OBJECT_DIR = CMakeFiles\OpenGL.dir
-  OBJECT_FILE_DIR = CMakeFiles\OpenGL.dir
+  OBJECT_DIR = CMakeFiles\ProceduralGenerationFINKI.dir
+  OBJECT_FILE_DIR = CMakeFiles\ProceduralGenerationFINKI.dir
 
-build CMakeFiles/OpenGL.dir/Shapes/shapes.cpp.obj: CXX_COMPILER__OpenGL_unscanned_Debug C$:/Users/mateycardula/CLionProjects/OpenGL/Shapes/shapes.cpp || cmake_object_order_depends_target_OpenGL
+build CMakeFiles/ProceduralGenerationFINKI.dir/Shapes/shapes.cpp.obj: CXX_COMPILER__ProceduralGenerationFINKI_unscanned_Debug C$:/Users/mateycardula/CLionProjects/OpenGL/Shapes/shapes.cpp || cmake_object_order_depends_target_ProceduralGenerationFINKI
   DEFINES = -DGLEW_STATIC
-  DEP_FILE = CMakeFiles\OpenGL.dir\Shapes\shapes.cpp.obj.d
+  DEP_FILE = CMakeFiles\ProceduralGenerationFINKI.dir\Shapes\shapes.cpp.obj.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
   INCLUDES = -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glew/include -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glfw/include -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glm -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/imgui
-  OBJECT_DIR = CMakeFiles\OpenGL.dir
-  OBJECT_FILE_DIR = CMakeFiles\OpenGL.dir\Shapes
+  OBJECT_DIR = CMakeFiles\ProceduralGenerationFINKI.dir
+  OBJECT_FILE_DIR = CMakeFiles\ProceduralGenerationFINKI.dir\Shapes
 
-build CMakeFiles/OpenGL.dir/Shaders/Shader.cpp.obj: CXX_COMPILER__OpenGL_unscanned_Debug C$:/Users/mateycardula/CLionProjects/OpenGL/Shaders/Shader.cpp || cmake_object_order_depends_target_OpenGL
+build CMakeFiles/ProceduralGenerationFINKI.dir/Shaders/Shader.cpp.obj: CXX_COMPILER__ProceduralGenerationFINKI_unscanned_Debug C$:/Users/mateycardula/CLionProjects/OpenGL/Shaders/Shader.cpp || cmake_object_order_depends_target_ProceduralGenerationFINKI
   DEFINES = -DGLEW_STATIC
-  DEP_FILE = CMakeFiles\OpenGL.dir\Shaders\Shader.cpp.obj.d
+  DEP_FILE = CMakeFiles\ProceduralGenerationFINKI.dir\Shaders\Shader.cpp.obj.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
   INCLUDES = -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glew/include -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glfw/include -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glm -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/imgui
-  OBJECT_DIR = CMakeFiles\OpenGL.dir
-  OBJECT_FILE_DIR = CMakeFiles\OpenGL.dir\Shaders
+  OBJECT_DIR = CMakeFiles\ProceduralGenerationFINKI.dir
+  OBJECT_FILE_DIR = CMakeFiles\ProceduralGenerationFINKI.dir\Shaders
 
-build CMakeFiles/OpenGL.dir/Meshes/Mesh.cpp.obj: CXX_COMPILER__OpenGL_unscanned_Debug C$:/Users/mateycardula/CLionProjects/OpenGL/Meshes/Mesh.cpp || cmake_object_order_depends_target_OpenGL
+build CMakeFiles/ProceduralGenerationFINKI.dir/Meshes/Mesh.cpp.obj: CXX_COMPILER__ProceduralGenerationFINKI_unscanned_Debug C$:/Users/mateycardula/CLionProjects/OpenGL/Meshes/Mesh.cpp || cmake_object_order_depends_target_ProceduralGenerationFINKI
   DEFINES = -DGLEW_STATIC
-  DEP_FILE = CMakeFiles\OpenGL.dir\Meshes\Mesh.cpp.obj.d
+  DEP_FILE = CMakeFiles\ProceduralGenerationFINKI.dir\Meshes\Mesh.cpp.obj.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
   INCLUDES = -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glew/include -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glfw/include -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glm -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/imgui
-  OBJECT_DIR = CMakeFiles\OpenGL.dir
-  OBJECT_FILE_DIR = CMakeFiles\OpenGL.dir\Meshes
+  OBJECT_DIR = CMakeFiles\ProceduralGenerationFINKI.dir
+  OBJECT_FILE_DIR = CMakeFiles\ProceduralGenerationFINKI.dir\Meshes
 
-build CMakeFiles/OpenGL.dir/Meshes/Factory/MeshFactory.cpp.obj: CXX_COMPILER__OpenGL_unscanned_Debug C$:/Users/mateycardula/CLionProjects/OpenGL/Meshes/Factory/MeshFactory.cpp || cmake_object_order_depends_target_OpenGL
+build CMakeFiles/ProceduralGenerationFINKI.dir/Camera/Camera.cpp.obj: CXX_COMPILER__ProceduralGenerationFINKI_unscanned_Debug C$:/Users/mateycardula/CLionProjects/OpenGL/Camera/Camera.cpp || cmake_object_order_depends_target_ProceduralGenerationFINKI
   DEFINES = -DGLEW_STATIC
-  DEP_FILE = CMakeFiles\OpenGL.dir\Meshes\Factory\MeshFactory.cpp.obj.d
+  DEP_FILE = CMakeFiles\ProceduralGenerationFINKI.dir\Camera\Camera.cpp.obj.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
   INCLUDES = -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glew/include -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glfw/include -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glm -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/imgui
-  OBJECT_DIR = CMakeFiles\OpenGL.dir
-  OBJECT_FILE_DIR = CMakeFiles\OpenGL.dir\Meshes\Factory
+  OBJECT_DIR = CMakeFiles\ProceduralGenerationFINKI.dir
+  OBJECT_FILE_DIR = CMakeFiles\ProceduralGenerationFINKI.dir\Camera
 
-build CMakeFiles/OpenGL.dir/Camera/Camera.cpp.obj: CXX_COMPILER__OpenGL_unscanned_Debug C$:/Users/mateycardula/CLionProjects/OpenGL/Camera/Camera.cpp || cmake_object_order_depends_target_OpenGL
+build CMakeFiles/ProceduralGenerationFINKI.dir/Input/InputManager.cpp.obj: CXX_COMPILER__ProceduralGenerationFINKI_unscanned_Debug C$:/Users/mateycardula/CLionProjects/OpenGL/Input/InputManager.cpp || cmake_object_order_depends_target_ProceduralGenerationFINKI
   DEFINES = -DGLEW_STATIC
-  DEP_FILE = CMakeFiles\OpenGL.dir\Camera\Camera.cpp.obj.d
+  DEP_FILE = CMakeFiles\ProceduralGenerationFINKI.dir\Input\InputManager.cpp.obj.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
   INCLUDES = -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glew/include -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glfw/include -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glm -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/imgui
-  OBJECT_DIR = CMakeFiles\OpenGL.dir
-  OBJECT_FILE_DIR = CMakeFiles\OpenGL.dir\Camera
+  OBJECT_DIR = CMakeFiles\ProceduralGenerationFINKI.dir
+  OBJECT_FILE_DIR = CMakeFiles\ProceduralGenerationFINKI.dir\Input
 
-build CMakeFiles/OpenGL.dir/Input/InputManager.cpp.obj: CXX_COMPILER__OpenGL_unscanned_Debug C$:/Users/mateycardula/CLionProjects/OpenGL/Input/InputManager.cpp || cmake_object_order_depends_target_OpenGL
+build CMakeFiles/ProceduralGenerationFINKI.dir/Meshes/Wall/Wall.cpp.obj: CXX_COMPILER__ProceduralGenerationFINKI_unscanned_Debug C$:/Users/mateycardula/CLionProjects/OpenGL/Meshes/Wall/Wall.cpp || cmake_object_order_depends_target_ProceduralGenerationFINKI
   DEFINES = -DGLEW_STATIC
-  DEP_FILE = CMakeFiles\OpenGL.dir\Input\InputManager.cpp.obj.d
+  DEP_FILE = CMakeFiles\ProceduralGenerationFINKI.dir\Meshes\Wall\Wall.cpp.obj.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
   INCLUDES = -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glew/include -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glfw/include -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glm -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/imgui
-  OBJECT_DIR = CMakeFiles\OpenGL.dir
-  OBJECT_FILE_DIR = CMakeFiles\OpenGL.dir\Input
+  OBJECT_DIR = CMakeFiles\ProceduralGenerationFINKI.dir
+  OBJECT_FILE_DIR = CMakeFiles\ProceduralGenerationFINKI.dir\Meshes\Wall
 
-build CMakeFiles/OpenGL.dir/Meshes/Cube/Cube.cpp.obj: CXX_COMPILER__OpenGL_unscanned_Debug C$:/Users/mateycardula/CLionProjects/OpenGL/Meshes/Cube/Cube.cpp || cmake_object_order_depends_target_OpenGL
+build CMakeFiles/ProceduralGenerationFINKI.dir/Meshes/Factory/Produce/MeshBuilder.cpp.obj: CXX_COMPILER__ProceduralGenerationFINKI_unscanned_Debug C$:/Users/mateycardula/CLionProjects/OpenGL/Meshes/Factory/Produce/MeshBuilder.cpp || cmake_object_order_depends_target_ProceduralGenerationFINKI
   DEFINES = -DGLEW_STATIC
-  DEP_FILE = CMakeFiles\OpenGL.dir\Meshes\Cube\Cube.cpp.obj.d
+  DEP_FILE = CMakeFiles\ProceduralGenerationFINKI.dir\Meshes\Factory\Produce\MeshBuilder.cpp.obj.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
   INCLUDES = -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glew/include -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glfw/include -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glm -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/imgui
-  OBJECT_DIR = CMakeFiles\OpenGL.dir
-  OBJECT_FILE_DIR = CMakeFiles\OpenGL.dir\Meshes\Cube
+  OBJECT_DIR = CMakeFiles\ProceduralGenerationFINKI.dir
+  OBJECT_FILE_DIR = CMakeFiles\ProceduralGenerationFINKI.dir\Meshes\Factory\Produce
 
-build CMakeFiles/OpenGL.dir/Meshes/Wall/Wall.cpp.obj: CXX_COMPILER__OpenGL_unscanned_Debug C$:/Users/mateycardula/CLionProjects/OpenGL/Meshes/Wall/Wall.cpp || cmake_object_order_depends_target_OpenGL
+build CMakeFiles/ProceduralGenerationFINKI.dir/Camera/UI/ImGuiManager.cpp.obj: CXX_COMPILER__ProceduralGenerationFINKI_unscanned_Debug C$:/Users/mateycardula/CLionProjects/OpenGL/Camera/UI/ImGuiManager.cpp || cmake_object_order_depends_target_ProceduralGenerationFINKI
   DEFINES = -DGLEW_STATIC
-  DEP_FILE = CMakeFiles\OpenGL.dir\Meshes\Wall\Wall.cpp.obj.d
+  DEP_FILE = CMakeFiles\ProceduralGenerationFINKI.dir\Camera\UI\ImGuiManager.cpp.obj.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
   INCLUDES = -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glew/include -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glfw/include -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glm -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/imgui
-  OBJECT_DIR = CMakeFiles\OpenGL.dir
-  OBJECT_FILE_DIR = CMakeFiles\OpenGL.dir\Meshes\Wall
+  OBJECT_DIR = CMakeFiles\ProceduralGenerationFINKI.dir
+  OBJECT_FILE_DIR = CMakeFiles\ProceduralGenerationFINKI.dir\Camera\UI
 
-build CMakeFiles/OpenGL.dir/Meshes/Factory/Produce/MeshProducer.cpp.obj: CXX_COMPILER__OpenGL_unscanned_Debug C$:/Users/mateycardula/CLionProjects/OpenGL/Meshes/Factory/Produce/MeshProducer.cpp || cmake_object_order_depends_target_OpenGL
+build CMakeFiles/ProceduralGenerationFINKI.dir/Camera/UI/UI.cpp.obj: CXX_COMPILER__ProceduralGenerationFINKI_unscanned_Debug C$:/Users/mateycardula/CLionProjects/OpenGL/Camera/UI/UI.cpp || cmake_object_order_depends_target_ProceduralGenerationFINKI
   DEFINES = -DGLEW_STATIC
-  DEP_FILE = CMakeFiles\OpenGL.dir\Meshes\Factory\Produce\MeshProducer.cpp.obj.d
+  DEP_FILE = CMakeFiles\ProceduralGenerationFINKI.dir\Camera\UI\UI.cpp.obj.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
   INCLUDES = -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glew/include -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glfw/include -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glm -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/imgui
-  OBJECT_DIR = CMakeFiles\OpenGL.dir
-  OBJECT_FILE_DIR = CMakeFiles\OpenGL.dir\Meshes\Factory\Produce
+  OBJECT_DIR = CMakeFiles\ProceduralGenerationFINKI.dir
+  OBJECT_FILE_DIR = CMakeFiles\ProceduralGenerationFINKI.dir\Camera\UI
 
-build CMakeFiles/OpenGL.dir/Camera/Raycaster.cpp.obj: CXX_COMPILER__OpenGL_unscanned_Debug C$:/Users/mateycardula/CLionProjects/OpenGL/Camera/Raycaster.cpp || cmake_object_order_depends_target_OpenGL
+build CMakeFiles/ProceduralGenerationFINKI.dir/Meshes/Floor/Floor.cpp.obj: CXX_COMPILER__ProceduralGenerationFINKI_unscanned_Debug C$:/Users/mateycardula/CLionProjects/OpenGL/Meshes/Floor/Floor.cpp || cmake_object_order_depends_target_ProceduralGenerationFINKI
   DEFINES = -DGLEW_STATIC
-  DEP_FILE = CMakeFiles\OpenGL.dir\Camera\Raycaster.cpp.obj.d
+  DEP_FILE = CMakeFiles\ProceduralGenerationFINKI.dir\Meshes\Floor\Floor.cpp.obj.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
   INCLUDES = -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glew/include -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glfw/include -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glm -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/imgui
-  OBJECT_DIR = CMakeFiles\OpenGL.dir
-  OBJECT_FILE_DIR = CMakeFiles\OpenGL.dir\Camera
+  OBJECT_DIR = CMakeFiles\ProceduralGenerationFINKI.dir
+  OBJECT_FILE_DIR = CMakeFiles\ProceduralGenerationFINKI.dir\Meshes\Floor
 
-build CMakeFiles/OpenGL.dir/Camera/UI/ImGuiManager.cpp.obj: CXX_COMPILER__OpenGL_unscanned_Debug C$:/Users/mateycardula/CLionProjects/OpenGL/Camera/UI/ImGuiManager.cpp || cmake_object_order_depends_target_OpenGL
+build CMakeFiles/ProceduralGenerationFINKI.dir/DungeonGenerator/DungeonGenerator.cpp.obj: CXX_COMPILER__ProceduralGenerationFINKI_unscanned_Debug C$:/Users/mateycardula/CLionProjects/OpenGL/DungeonGenerator/DungeonGenerator.cpp || cmake_object_order_depends_target_ProceduralGenerationFINKI
   DEFINES = -DGLEW_STATIC
-  DEP_FILE = CMakeFiles\OpenGL.dir\Camera\UI\ImGuiManager.cpp.obj.d
+  DEP_FILE = CMakeFiles\ProceduralGenerationFINKI.dir\DungeonGenerator\DungeonGenerator.cpp.obj.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
   INCLUDES = -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glew/include -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glfw/include -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glm -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/imgui
-  OBJECT_DIR = CMakeFiles\OpenGL.dir
-  OBJECT_FILE_DIR = CMakeFiles\OpenGL.dir\Camera\UI
+  OBJECT_DIR = CMakeFiles\ProceduralGenerationFINKI.dir
+  OBJECT_FILE_DIR = CMakeFiles\ProceduralGenerationFINKI.dir\DungeonGenerator
 
-build CMakeFiles/OpenGL.dir/Camera/UI/UI.cpp.obj: CXX_COMPILER__OpenGL_unscanned_Debug C$:/Users/mateycardula/CLionProjects/OpenGL/Camera/UI/UI.cpp || cmake_object_order_depends_target_OpenGL
+build CMakeFiles/ProceduralGenerationFINKI.dir/Meshes/Texture.cpp.obj: CXX_COMPILER__ProceduralGenerationFINKI_unscanned_Debug C$:/Users/mateycardula/CLionProjects/OpenGL/Meshes/Texture.cpp || cmake_object_order_depends_target_ProceduralGenerationFINKI
   DEFINES = -DGLEW_STATIC
-  DEP_FILE = CMakeFiles\OpenGL.dir\Camera\UI\UI.cpp.obj.d
+  DEP_FILE = CMakeFiles\ProceduralGenerationFINKI.dir\Meshes\Texture.cpp.obj.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
   INCLUDES = -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glew/include -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glfw/include -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glm -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/imgui
-  OBJECT_DIR = CMakeFiles\OpenGL.dir
-  OBJECT_FILE_DIR = CMakeFiles\OpenGL.dir\Camera\UI
+  OBJECT_DIR = CMakeFiles\ProceduralGenerationFINKI.dir
+  OBJECT_FILE_DIR = CMakeFiles\ProceduralGenerationFINKI.dir\Meshes
 
-build CMakeFiles/OpenGL.dir/Meshes/Floor/Floor.cpp.obj: CXX_COMPILER__OpenGL_unscanned_Debug C$:/Users/mateycardula/CLionProjects/OpenGL/Meshes/Floor/Floor.cpp || cmake_object_order_depends_target_OpenGL
+build CMakeFiles/ProceduralGenerationFINKI.dir/Meshes/GeometryManager.cpp.obj: CXX_COMPILER__ProceduralGenerationFINKI_unscanned_Debug C$:/Users/mateycardula/CLionProjects/OpenGL/Meshes/GeometryManager.cpp || cmake_object_order_depends_target_ProceduralGenerationFINKI
   DEFINES = -DGLEW_STATIC
-  DEP_FILE = CMakeFiles\OpenGL.dir\Meshes\Floor\Floor.cpp.obj.d
+  DEP_FILE = CMakeFiles\ProceduralGenerationFINKI.dir\Meshes\GeometryManager.cpp.obj.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
   INCLUDES = -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glew/include -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glfw/include -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glm -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/imgui
-  OBJECT_DIR = CMakeFiles\OpenGL.dir
-  OBJECT_FILE_DIR = CMakeFiles\OpenGL.dir\Meshes\Floor
+  OBJECT_DIR = CMakeFiles\ProceduralGenerationFINKI.dir
+  OBJECT_FILE_DIR = CMakeFiles\ProceduralGenerationFINKI.dir\Meshes
 
-build CMakeFiles/OpenGL.dir/DungeonGenerator/DungeonGenerator.cpp.obj: CXX_COMPILER__OpenGL_unscanned_Debug C$:/Users/mateycardula/CLionProjects/OpenGL/DungeonGenerator/DungeonGenerator.cpp || cmake_object_order_depends_target_OpenGL
+build CMakeFiles/ProceduralGenerationFINKI.dir/Meshes/Doorway/Doorway.cpp.obj: CXX_COMPILER__ProceduralGenerationFINKI_unscanned_Debug C$:/Users/mateycardula/CLionProjects/OpenGL/Meshes/Doorway/Doorway.cpp || cmake_object_order_depends_target_ProceduralGenerationFINKI
   DEFINES = -DGLEW_STATIC
-  DEP_FILE = CMakeFiles\OpenGL.dir\DungeonGenerator\DungeonGenerator.cpp.obj.d
+  DEP_FILE = CMakeFiles\ProceduralGenerationFINKI.dir\Meshes\Doorway\Doorway.cpp.obj.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
   INCLUDES = -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glew/include -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glfw/include -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glm -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/imgui
-  OBJECT_DIR = CMakeFiles\OpenGL.dir
-  OBJECT_FILE_DIR = CMakeFiles\OpenGL.dir\DungeonGenerator
-
-build CMakeFiles/OpenGL.dir/Meshes/Texture.cpp.obj: CXX_COMPILER__OpenGL_unscanned_Debug C$:/Users/mateycardula/CLionProjects/OpenGL/Meshes/Texture.cpp || cmake_object_order_depends_target_OpenGL
-  DEFINES = -DGLEW_STATIC
-  DEP_FILE = CMakeFiles\OpenGL.dir\Meshes\Texture.cpp.obj.d
-  FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glew/include -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glfw/include -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glm -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/imgui
-  OBJECT_DIR = CMakeFiles\OpenGL.dir
-  OBJECT_FILE_DIR = CMakeFiles\OpenGL.dir\Meshes
-
-build CMakeFiles/OpenGL.dir/Meshes/GeometryManager.cpp.obj: CXX_COMPILER__OpenGL_unscanned_Debug C$:/Users/mateycardula/CLionProjects/OpenGL/Meshes/GeometryManager.cpp || cmake_object_order_depends_target_OpenGL
-  DEFINES = -DGLEW_STATIC
-  DEP_FILE = CMakeFiles\OpenGL.dir\Meshes\GeometryManager.cpp.obj.d
-  FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glew/include -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glfw/include -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/glm -IC:/Users/mateycardula/CLionProjects/OpenGL/Include/imgui
-  OBJECT_DIR = CMakeFiles\OpenGL.dir
-  OBJECT_FILE_DIR = CMakeFiles\OpenGL.dir\Meshes
+  OBJECT_DIR = CMakeFiles\ProceduralGenerationFINKI.dir
+  OBJECT_FILE_DIR = CMakeFiles\ProceduralGenerationFINKI.dir\Meshes\Doorway
 
 
 # =============================================================================
-# Link build statements for EXECUTABLE target OpenGL
+# Link build statements for EXECUTABLE target ProceduralGenerationFINKI
 
 
 #############################################
-# Link the executable OpenGL.exe
+# Link the executable ProceduralGenerationFINKI.exe
 
-build OpenGL.exe: CXX_EXECUTABLE_LINKER__OpenGL_Debug CMakeFiles/OpenGL.dir/main.cpp.obj CMakeFiles/OpenGL.dir/Include/imgui/imgui.cpp.obj CMakeFiles/OpenGL.dir/Include/imgui/imgui_draw.cpp.obj CMakeFiles/OpenGL.dir/Include/imgui/imgui_widgets.cpp.obj CMakeFiles/OpenGL.dir/Include/imgui/imgui_impl_glfw.cpp.obj CMakeFiles/OpenGL.dir/Include/imgui/imgui_impl_opengl3.cpp.obj CMakeFiles/OpenGL.dir/Include/imgui/imgui_demo.cpp.obj CMakeFiles/OpenGL.dir/Include/imgui/imgui_tables.cpp.obj CMakeFiles/OpenGL.dir/init.cpp.obj CMakeFiles/OpenGL.dir/Shapes/shapes.cpp.obj CMakeFiles/OpenGL.dir/Shaders/Shader.cpp.obj CMakeFiles/OpenGL.dir/Meshes/Mesh.cpp.obj CMakeFiles/OpenGL.dir/Meshes/Factory/MeshFactory.cpp.obj CMakeFiles/OpenGL.dir/Camera/Camera.cpp.obj CMakeFiles/OpenGL.dir/Input/InputManager.cpp.obj CMakeFiles/OpenGL.dir/Meshes/Cube/Cube.cpp.obj CMakeFiles/OpenGL.dir/Meshes/Wall/Wall.cpp.obj CMakeFiles/OpenGL.dir/Meshes/Factory/Produce/MeshProducer.cpp.obj CMakeFiles/OpenGL.dir/Camera/Raycaster.cpp.obj CMakeFiles/OpenGL.dir/Camera/UI/ImGuiManager.cpp.obj CMakeFiles/OpenGL.dir/Camera/UI/UI.cpp.obj CMakeFiles/OpenGL.dir/Meshes/Floor/Floor.cpp.obj CMakeFiles/OpenGL.dir/DungeonGenerator/DungeonGenerator.cpp.obj CMakeFiles/OpenGL.dir/Meshes/Texture.cpp.obj CMakeFiles/OpenGL.dir/Meshes/GeometryManager.cpp.obj
+build ProceduralGenerationFINKI.exe: CXX_EXECUTABLE_LINKER__ProceduralGenerationFINKI_Debug CMakeFiles/ProceduralGenerationFINKI.dir/main.cpp.obj CMakeFiles/ProceduralGenerationFINKI.dir/Include/imgui/imgui.cpp.obj CMakeFiles/ProceduralGenerationFINKI.dir/Include/imgui/imgui_draw.cpp.obj CMakeFiles/ProceduralGenerationFINKI.dir/Include/imgui/imgui_widgets.cpp.obj CMakeFiles/ProceduralGenerationFINKI.dir/Include/imgui/imgui_impl_glfw.cpp.obj CMakeFiles/ProceduralGenerationFINKI.dir/Include/imgui/imgui_impl_opengl3.cpp.obj CMakeFiles/ProceduralGenerationFINKI.dir/Include/imgui/imgui_demo.cpp.obj CMakeFiles/ProceduralGenerationFINKI.dir/Include/imgui/imgui_tables.cpp.obj CMakeFiles/ProceduralGenerationFINKI.dir/init.cpp.obj CMakeFiles/ProceduralGenerationFINKI.dir/Shapes/shapes.cpp.obj CMakeFiles/ProceduralGenerationFINKI.dir/Shaders/Shader.cpp.obj CMakeFiles/ProceduralGenerationFINKI.dir/Meshes/Mesh.cpp.obj CMakeFiles/ProceduralGenerationFINKI.dir/Camera/Camera.cpp.obj CMakeFiles/ProceduralGenerationFINKI.dir/Input/InputManager.cpp.obj CMakeFiles/ProceduralGenerationFINKI.dir/Meshes/Wall/Wall.cpp.obj CMakeFiles/ProceduralGenerationFINKI.dir/Meshes/Factory/Produce/MeshBuilder.cpp.obj CMakeFiles/ProceduralGenerationFINKI.dir/Camera/UI/ImGuiManager.cpp.obj CMakeFiles/ProceduralGenerationFINKI.dir/Camera/UI/UI.cpp.obj CMakeFiles/ProceduralGenerationFINKI.dir/Meshes/Floor/Floor.cpp.obj CMakeFiles/ProceduralGenerationFINKI.dir/DungeonGenerator/DungeonGenerator.cpp.obj CMakeFiles/ProceduralGenerationFINKI.dir/Meshes/Texture.cpp.obj CMakeFiles/ProceduralGenerationFINKI.dir/Meshes/GeometryManager.cpp.obj CMakeFiles/ProceduralGenerationFINKI.dir/Meshes/Doorway/Doorway.cpp.obj
   FLAGS = -g
+  LINK_FLAGS = -static-libgcc -static-libstdc++ -static  -mwindows
   LINK_LIBRARIES = -lglew32s  -lglfw3  -lopengl32  -lglew32  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   LINK_PATH = -LC:/Users/mateycardula/CLionProjects/OpenGL/Include/glew/lib/Release/x64   -LC:/Users/mateycardula/CLionProjects/OpenGL/Include/glfw/lib-mingw-w64
-  OBJECT_DIR = CMakeFiles\OpenGL.dir
+  OBJECT_DIR = CMakeFiles\ProceduralGenerationFINKI.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
-  TARGET_FILE = OpenGL.exe
-  TARGET_IMPLIB = libOpenGL.dll.a
-  TARGET_PDB = OpenGL.exe.dbg
+  TARGET_FILE = ProceduralGenerationFINKI.exe
+  TARGET_IMPLIB = libProceduralGenerationFINKI.dll.a
+  TARGET_PDB = ProceduralGenerationFINKI.exe.dbg
 
 
 #############################################
@@ -294,7 +279,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 # =============================================================================
 # Target aliases.
 
-build OpenGL: phony OpenGL.exe
+build ProceduralGenerationFINKI: phony ProceduralGenerationFINKI.exe
 
 # =============================================================================
 # Folder targets.
@@ -304,7 +289,7 @@ build OpenGL: phony OpenGL.exe
 #############################################
 # Folder: C:/Users/mateycardula/CLionProjects/OpenGL/cmake-build-debug
 
-build all: phony OpenGL.exe
+build all: phony ProceduralGenerationFINKI.exe
 
 # =============================================================================
 # Built-in targets

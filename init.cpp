@@ -10,6 +10,8 @@
 
 using namespace std;
 
+GLFWwindow* Init::window = nullptr;
+
 Init::Init(int width, int height, const char* title) {
     this->width = width;
     this->height = height;
@@ -33,16 +35,16 @@ bool Init::initializeGLFW() {
 }
 
 GLFWwindow* Init::createWindow(int width, int height, const char* title) {
-    GLFWwindow* window = glfwCreateWindow(width, height, title, NULL, NULL);
-    if (!window) {
+    GLFWwindow* newWindow = glfwCreateWindow(width, height, title, NULL, NULL);
+    if (!newWindow) {
         cout << "Failed to open a window.";
         return nullptr;
     }
-    this->window = window;
+    window = newWindow;
     return window;
 }
 
-bool Init::initializeGLEW(GLFWwindow* window) {
+bool Init::initializeGLEW() {
     glfwMakeContextCurrent(window);
     glewExperimental = GL_TRUE;
     if (glewInit() != GLEW_OK) {
@@ -52,30 +54,33 @@ bool Init::initializeGLEW(GLFWwindow* window) {
     return true;
 }
 
-bool Init::initializeApplication(GLFWwindow** window) {
+bool Init::initializeApplication() {
     if (!initializeGLFW()) {
         return false;
     }
 
-    *window = createWindow(width, height, title);
-    if (!(*window)) {
+    window = createWindow(width, height, title);
+    if (!(window)) {
         glfwTerminate();
         return false;
     }
 
     int bufferWidth, bufferHeight;
-    glfwGetFramebufferSize(*window, &bufferWidth, &bufferHeight);
+    glfwGetFramebufferSize(window, &bufferWidth, &bufferHeight);
 
-    if (!initializeGLEW(*window)) {
-        glfwDestroyWindow(*window);
+    if (!initializeGLEW()) {
+        glfwDestroyWindow(window);
         glfwTerminate();
         return false;
     }
     glViewport(0, 0, bufferWidth, bufferHeight);
 
-    camera = Camera(glm::vec3(0.0f, 0.0f, 3.0f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f, 0.0f);
-    glfwSetWindowUserPointer(*window, &camera);
-    glfwSetCursorPosCallback(*window, InputManager::mouseCallback);
+    float camera_ratio = (float)bufferWidth/(float) bufferHeight;
+    camera = Camera(glm::vec3(0.0f, 0.0f, 3.0f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f, 0.0f, camera_ratio);
+    glfwSetWindowUserPointer(window, &camera);
+    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+    glfwSetCursorPosCallback(window, InputManager::mouseCallback);
+    glfwSetFramebufferSizeCallback(window, InputManager::framebuffer_size_callback);
 
 
     return true;

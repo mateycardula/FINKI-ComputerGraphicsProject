@@ -15,15 +15,15 @@ public:
     Init(int width, int height, const char* title);
     Init();
 
-    bool initializeApplication(GLFWwindow** window);
+    bool initializeApplication();
 
     bool initializeGLFW();
     GLFWwindow* createWindow(int width, int height, const char* title);
-    bool initializeGLEW(GLFWwindow* window);
+    bool initializeGLEW();
     Camera camera;
     int width;
     int height;
-    GLFWwindow * window;
+    static GLFWwindow * window;
 
 private:
     const char* title;
